@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="main">
           <aside>side bar</aside>
-          <section>{children}</section>
+          <section className="bg-">{children}</section>
         </main>
       </body>
     </html>
