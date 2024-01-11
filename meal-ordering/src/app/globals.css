@@ -142,3 +142,10 @@ img {
   object-fit: cover;
   object-position: center center;
 }
+
+.main {
+  display:grid;
+  grid-template-columns: 0.2fr 0.8fr;
+  width: 100dvh;
+  height: 100dvh;
+}
