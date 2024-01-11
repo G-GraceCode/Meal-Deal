@@ -3,25 +3,142 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #fefefe;
+  --bg-2: #0d1118;
+  --primary: #f97316;
+  --secondary: rgb(7, 148, 7);
+  --color-cart: #666e7e;
+
+  --font-primary: #0d1118;
+  --font-secondary: #fefefe;
+
+  --border-c: #bdacb8;
+  --border-c2: #0d1118;
+  --border-w: 1px double;
+  --boder-2w: 2px double;
+
+  /* <==== box shadow ===> */
+  --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+
+  /* <=========== font weight ===========> */
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* margin */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* z-index */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /* border-radius */
+
+  --border-radius: 15px;
+  --border-radius-2: 25px;
+
+  /* transition */
+  --transition: 400ms ease-in-out;
+
+  /* <=========== font and typography ===========> */
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Dark mode */
+.dark {
+  --bg: #fefefe;
+  --bg-2: #0d1118;
+
+  --font-primary: #fefefe;
+  --font-secondary: #0d1118;
+
+  --primary: #f97316;
+  --secondary: rgb(7, 148, 7);
+
+  --border-c: #0d1118;
+  --border-c2: #bdacb8;
+}
+
+/* <==== General Setting ====> */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all var(--transition);
+  border: none;
+  outline: none;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: auto;
+}
+
+/* <=========== scroll behaviour ===========> */
+html::-webkit-scrollbar {
+  width: 0.38rem;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+  border-radius: 0.38rem;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  overflow-x: hidden;
+  color: var(--font-primary);
+  background-color: var(--bg);
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4 {
+  /* help to prevent overflow of long words/names /urls */
+  overflow-wrap: break-word;
+  /* optional, not supported for all languages */
+  hyphens: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.5;
+}
+
+a,
+Link {
+  text-decoration: underline 1px;
+  color: var(--color-green);
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
 }
