@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Sidenav from "@/components/sidebar/Sidenav";
+import Navbar from "@/components/navbar/Navbar";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -15,7 +16,10 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="main">
           <Sidenav />
-          <section className="bg-[#f00cce]">{children}</section>
+          <section className="bg-[#f00cce]">
+            <Navbar />
+            {children}
+          </section>
         </main>
       </body>
     </html>
