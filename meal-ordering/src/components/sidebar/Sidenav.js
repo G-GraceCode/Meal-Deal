@@ -20,13 +20,13 @@ export default function Sidenav() {
       <aside className="sticky top-0 flex items-center flex-col justify-start bg-[#feeFcc]">
         <div className="relative bg-[#000] w-full h-16">
           <Image
-            src={"/3.svg"}
-            width={300}
-            height={300}
+            src={"/meal.png"}
+            width={200}
+            height={200}
             // layout={"fill"}
             // objectFit={"contain"}
             alt={"meal-logo"}
-            className="absolute inset-x-0 top-0 w-70"
+            className="absolute inset-x-0 top-0 w-40"
           />
         </div>
         <ul

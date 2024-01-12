@@ -2,15 +2,15 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
+      <div className="flex flex-row items-center justify-between">
+        <Link href={"/"}>
+          <img src={"/mealdeal.png"} className="w-20" />
+        </Link>
         <div>
-      <Link>
-      <img src={"/2.svg"} />
-      </Link>
-      <div>
-        <Link to="">Log in</Link>
-        <Link to="">Register</Link>
-      </div>
+          <Link href={"/"}>Log in</Link>
+          <Link href={"/"}>Register</Link>
+        </div>
       </div>
     </nav>
   );
