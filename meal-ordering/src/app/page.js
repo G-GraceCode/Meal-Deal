@@ -1,3 +1,10 @@
+import Hero from "@/components/layout/Hero";
+
 export default function Home() {
-  return <div>Text</div>;
+  return (
+    <>
+      <Hero />
+      <div> Menu </div>
+    </>
+  );
 }
