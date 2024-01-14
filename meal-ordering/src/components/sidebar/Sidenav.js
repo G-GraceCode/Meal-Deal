@@ -30,10 +30,10 @@ export default function Sidenav() {
           />
         </div>
         <ul
-          className="w-full flex flex-col items-center justify-center py-4 gap-3 text-gray-800 text-xs mt-6"
+          className="w-full flex flex-col items-center justify-center py-4 gap-3 text-gray-800 text-xs mt-6 nav_list"
           style={{ borderBottom: "2px double #000" }}
         >
-          <li className="flex flex-col items-center">
+          <li className="flex flex-col items-center active">
             <AiFillHome size={22} className="mb-2" /> <p>Home</p>
           </li>
           <li className="flex flex-col items-center">

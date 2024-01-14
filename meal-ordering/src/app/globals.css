@@ -155,3 +155,36 @@ img {
     grid-template-columns: 0.14fr 1fr;
   }
 }
+
+/* The Sidenav styling */
+.nav_list li {
+  width: 100%;
+  padding: 0.6rem 0;
+}
+.nav_list li.active {
+  background: var(--bg);
+  position: relative;
+  z-index: -1;
+}
+
+.nav_list li.active::before,
+.nav_list li.active::after {
+  --border-r: 0.7rem;
+
+  content: "";
+  width: var(--border-r);
+  height: var(--border-r);
+  position: absolute;
+  right: 0rem;
+  background: #feefcc;
+}
+.nav_list li.active::before {
+  border-radius: 0 0 var(--border-r);
+  top: calc(var(--border-r) * -1);
+  box-shadow: 5px 5px 0 5px var(--bg);
+}
+.nav_list li.active::after {
+  border-radius: 0 var(--border-r) 0 0;
+  bottom: calc(var(--border-r) * -1);
+  box-shadow: 5px -5px 0 5px var(--bg);
+}
