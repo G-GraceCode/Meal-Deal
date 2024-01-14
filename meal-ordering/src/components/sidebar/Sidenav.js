@@ -30,42 +30,42 @@ export default function Sidenav() {
           />
         </div>
         <ul
-          className="w-full flex flex-col items-center justify-center py-4 gap-2 text-gray-800 text-sm mt-6"
+          className="w-full flex flex-col items-center justify-center py-4 gap-3 text-gray-800 text-xs mt-6"
           style={{ borderBottom: "2px double #000" }}
         >
           <li className="flex flex-col items-center">
-            <AiFillHome size={25} className="mb-2" /> <p>Home</p>
+            <AiFillHome size={22} className="mb-2" /> <p>Home</p>
           </li>
           <li className="flex flex-col items-center">
-            <IoSearchOutline size={25} className="mb-2" /> <p>Search</p>
+            <IoSearchOutline size={22} className="mb-2" /> <p>Search</p>
           </li>
           <li className="flex flex-col items-center">
-            <CgMenuGridO size={25} className="mb-2" /> <p>Menu</p>
+            <CgMenuGridO size={22} className="mb-2" /> <p>Menu</p>
           </li>
         </ul>
-        <ul className="flex flex-col gap-2 py-4 text-gray-800 text-sm">
+        <ul className="flex flex-col gap-3 py-4 text-gray-800 text-xs">
           <li className="flex flex-col items-center">
-            <TbTruckDelivery size={25} className="mb-2" /> <p>Orders</p>
+            <TbTruckDelivery size={22} className="mb-2" /> <p>Orders</p>
           </li>
           <li className="flex flex-col items-center">
-            <MdFavorite size={25} className="mb-2" /> Favorites
+            <MdFavorite size={22} className="mb-2" /> Favorites
           </li>
           {/* <li className="flex flex-col items-center">
-            <FaWallet size={25} className="mr-2" /> <p>Wallet </p>
+            <FaWallet size={22} className="mr-2" /> <p>Wallet </p>
           </li> */}
           <li className="flex flex-col items-center">
-            <AiFillTag size={25} className="mb-2" /> <p> Promo's</p>
+            <AiFillTag size={22} className="mb-2" /> <p> Promo's</p>
           </li>
           <li className="flex flex-col items-center">
-            <BsFillSaveFill size={25} className="mb-2" /> <p> Best Ones </p>
+            <BsFillSaveFill size={22} className="mb-2" /> <p> Best Ones </p>
           </li>
           {/* <li className="flex flex-col items-center">
-            <FaUserFriends size={25} className="mb-2" /> Invite Friends
+            <FaUserFriends size={22} className="mb-2" /> Invite Friends
           </li> */}
         </ul>
 
         <div className="absolute mx-auto inset-x-0 bottom-6 flex items-center flex-col">
-          <IoIosSunny size={25} />
+          <IoIosSunny size={22} />
         </div>
       </aside>
     </>

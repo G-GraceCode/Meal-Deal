@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="main">
           <Sidenav />
-          <section className="bg-[#f00cce]">
+          <section className="bg-bg">
             <Navbar />
             {children}
           </section>
