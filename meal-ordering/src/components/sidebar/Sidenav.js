@@ -18,15 +18,15 @@ export default function Sidenav() {
   return (
     <>
       <aside className="sticky top-0 flex items-center flex-col justify-start bg-[#feeFcc]">
-        <div className="relative bg-[#000] w-full h-16 flex items-center justify-center">
+        <div className="relative bg-[#000] w-full h-12 flex items-center justify-center">
           <Image
             src={"/meal.png"}
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             // layout={"fill"}
             // objectFit={"contain"}
             alt={"meal-logo"}
-            className="absolute inset-y-0 w-12 mx-auto mt-2"
+            className="absolute inset-y-0 w-10 mx-auto mt-1"
           />
         </div>
         <ul
@@ -48,7 +48,7 @@ export default function Sidenav() {
             <TbTruckDelivery size={25} className="mb-2" /> <p>Orders</p>
           </li>
           <li className="flex flex-col items-center">
-            <MdFavorite size={25} className="mr-2" /> Favorites
+            <MdFavorite size={25} className="mb-2" /> Favorites
           </li>
           {/* <li className="flex flex-col items-center">
             <FaWallet size={25} className="mr-2" /> <p>Wallet </p>

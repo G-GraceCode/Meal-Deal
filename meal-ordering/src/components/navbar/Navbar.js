@@ -1,12 +1,19 @@
 import Link from "next/link";
+import { RiMenuUnfoldFill } from "react-icons/ri";
 
 export default function Navbar() {
   return (
     <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
       <div className="flex flex-row items-center justify-between p-2">
-        <Link href={"/"} className="font-semibold text-2xl">
-          Meal<span>Deal</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <RiMenuUnfoldFill size={25} />
+          <Link
+            href={"/"}
+            className="font-semibold text-2xl no-underline text-secondary"
+          >
+            Meal<span className="text-primary ml-2">Deal</span>
+          </Link>
+        </div>
         <div>
           <Link
             href={"/"}
