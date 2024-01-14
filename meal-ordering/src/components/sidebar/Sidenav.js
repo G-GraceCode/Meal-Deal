@@ -18,7 +18,7 @@ export default function Sidenav() {
   return (
     <>
       <aside className="sticky top-0 flex items-center flex-col justify-start bg-[#feeFcc]">
-        <div className="relative bg-[#000] w-full h-12 flex items-center justify-center">
+        <div className="relative bg-secondary w-full h-12 flex items-center justify-center">
           <Image
             src={"/meal.png"}
             width={100}
@@ -30,7 +30,7 @@ export default function Sidenav() {
           />
         </div>
         <ul
-          className="w-full flex flex-col items-center justify-center py-4 gap-3 text-gray-800 text-xs mt-6 nav_list"
+          className="w-full flex flex-col items-center justify-center py-4 gap-1 text-gray-800 text-xs mt-6 nav_list"
           style={{ borderBottom: "2px double #000" }}
         >
           <li className="flex flex-col items-center active">
@@ -43,7 +43,7 @@ export default function Sidenav() {
             <CgMenuGridO size={22} className="mb-2" /> <p>Menu</p>
           </li>
         </ul>
-        <ul className="flex flex-col gap-3 py-4 text-gray-800 text-xs">
+        <ul className="flex flex-col gap-1 py-4 text-gray-800 text-xs nav_list">
           <li className="flex flex-col items-center">
             <TbTruckDelivery size={22} className="mb-2" /> <p>Orders</p>
           </li>
