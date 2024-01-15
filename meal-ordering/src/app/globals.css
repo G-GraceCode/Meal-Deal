@@ -197,7 +197,12 @@ input[type="password"],
 input[type="tel"],
 input[type="text"] {
   @apply block w-full mb-3 rounded-xl;
-  @apply border p-2 border-gray-300 bg-gray-100;
+  @apply border p-1.5 border-gray-300 bg-gray-100;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  @apply outline outline-gray-400;
 }
 /* input[type="email"]:disabled,
 input[type="password"]:disabled,

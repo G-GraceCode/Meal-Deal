@@ -34,7 +34,7 @@ export default function RegisterPage() {
           or login with provider
         </div>
         <button className="flex gap-4 justify-center items-center">
-          <FcGoogle /> Login with google
+          <FcGoogle size={25} /> Login with google
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
           Existing account?{" "}
