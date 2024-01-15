@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -16,8 +17,18 @@ export default function RegisterPage() {
         Register{" "}
       </h2>
       <form className="block max-w-sm mx-auto" onSubmit={handleFormSubmit}>
-        <input type="email" placeholder="email" />
-        <input type="password" placeholder="password" />
+        <input
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Register</button>
         <div className="my-4 text-center text-gray-500">
           or login with provider
