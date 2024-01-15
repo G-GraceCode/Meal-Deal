@@ -16,13 +16,13 @@ export default function Navbar() {
         </div>
         <div>
           <Link
-            href={"/"}
+            href={"/login"}
             className="py-2 px-6 rounded-2xl border border-[#000] border-solid text-[#000] mr-3 no-underline"
           >
             Log in
           </Link>
           <Link
-            href={"/"}
+            href={"/register"}
             className="py-2 px-6 rounded-2xl bg-[#000] text-[#fff] no-underline"
           >
             Register
