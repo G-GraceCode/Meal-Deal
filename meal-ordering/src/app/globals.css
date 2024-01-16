@@ -221,12 +221,12 @@ input[type="email"]:focus,
 input[type="password"]:focus {
   @apply outline outline-gray-400;
 }
-/* input[type="email"]:disabled,
+input[type="email"]:disabled,
 input[type="password"]:disabled,
 input[type="tel"]:disabled,
 input[type="text"]:disabled {
-    @apply bg-gray-300 border-0 cursor-not-allowed text-gray-500;
-} */
+  @apply bg-gray-300 border-0 cursor-not-allowed text-gray-500;
+}
 label {
   @apply text-gray-500 text-sm leading-tight;
 }

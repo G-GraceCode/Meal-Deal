@@ -9,11 +9,10 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      require: true,
-      validate: () => {
-        if (!password?.length || password?.length < 5) {
-          throw new Error("Pass Word Must be Greater than 5");
-          return false;
+      required: true,
+      validate: (pass) => {
+        if (!pass?.length || pass.length < 5) {
+          new Error("Pass Word Must be Atleast 5 characters");
         }
       },
     },
