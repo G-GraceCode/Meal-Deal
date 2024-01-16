@@ -17,7 +17,7 @@ import { IoIosSunny } from "react-icons/io";
 export default function Sidenav() {
   return (
     <>
-      <aside className="sticky top-0 flex items-center flex-col justify-start bg-[#feeFcc]">
+      <aside className="sticky top-0 flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
         <div className="relative bg-secondary w-full h-12 flex items-center justify-center">
           <Image
             src={"/meal.png"}
