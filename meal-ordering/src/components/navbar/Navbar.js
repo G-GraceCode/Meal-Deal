@@ -7,6 +7,8 @@ export default function Navbar() {
   const session = useSession();
   console.log("user", session);
   const status = session.status;
+  const userInfo = session.data?.user;
+
   return (
     <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
       <div className="flex flex-row items-center justify-between p-2">
@@ -21,12 +23,19 @@ export default function Navbar() {
         </div>
         <div>
           {status === "authenticated" && (
-            <button
-              onClick={() => signOut()}
-              className="py-2 px-6 rounded-full text-xs border-none bg-primary text-[#000] mr-3 no-underline"
-            >
-              Log Out
-            </button>
+            <>
+              <Link href={"/profile"} className="no-underline">
+                <span className="w-4 h-4 rounded-full bg-primary flex items-center justify-center text-sm text-fontSecondary">
+                  Y
+                </span>
+              </Link>
+              <button
+                onClick={() => signOut()}
+                className="py-2 px-6 rounded-full text-xs border-none bg-primary text-fontSecondary mr-3 no-underline"
+              >
+                Log Out
+              </button>
+            </>
           )}
           {status === "unauthenticated" && (
             <>
