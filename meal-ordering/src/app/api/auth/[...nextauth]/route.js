@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
 const handler = NextAuth({
-  secret: process.env.SECRET
+  secret: process.env.SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -19,15 +19,15 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-      const {email, password} = credentials
+        const { email, password } = credentials;
 
-      mongoose.connect(process.env.DB_URI)
-      const user = await User.findOne({email})
-      const checkUser = user && bcrypt.compareSync(password, user.password)
+        mongoose.connect(process.env.DB_URI);
+        const user = await User.findOne({ email });
+        const checkUser = user && bcrypt.compareSync(password, user.password);
 
-      if(checkUser){
-        return user
-      }
+        if (checkUser) {
+          return user;
+        }
         // Return null if user data could not be retrieved
         return null;
       },

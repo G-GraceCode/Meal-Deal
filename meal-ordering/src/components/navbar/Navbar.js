@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { RiMenuUnfoldFill } from "react-icons/ri";
 
 export default function Navbar() {
