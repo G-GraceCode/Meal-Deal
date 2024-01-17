@@ -3,6 +3,9 @@ import { useSession } from "next-auth/react";
 import { RiMenuUnfoldFill } from "react-icons/ri";
 
 export default function Navbar() {
+  const session = useSession();
+  console.log("user", session);
+
   return (
     <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
       <div className="flex flex-row items-center justify-between p-2">

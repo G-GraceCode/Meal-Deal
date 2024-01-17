@@ -15,15 +15,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <main className="main">
-          <AppProvider>
+        <AppProvider>
+          <main className="main">
             <Sidenav />
             <section className="bg-bg right-side flex-1">
               <Navbar />
               {children}
             </section>
-          </AppProvider>
-        </main>
+          </main>
+        </AppProvider>
       </body>
     </html>
   );
