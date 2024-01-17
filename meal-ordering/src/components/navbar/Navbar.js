@@ -8,6 +8,10 @@ export default function Navbar() {
   console.log("user", session);
   const status = session.status;
   const userInfo = session.data?.user;
+  let currentUser = userInfo?.name || userInfo?.email;
+  if (userInfo && currentUser.includes(" ")) {
+    currentUser = currentUser.split(" ")[0];
+  }
 
   return (
     <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
@@ -23,11 +27,15 @@ export default function Navbar() {
         </div>
         <div>
           {status === "authenticated" && (
-            <>
-              <Link href={"/profile"} className="no-underline">
-                <span className="w-4 h-4 rounded-full bg-primary flex items-center justify-center text-sm text-fontSecondary">
-                  Y
+            <div className="flex items-center justify-center gap-3">
+              <Link
+                href={"/profile"}
+                className="no-underline flex items-center mr-2"
+              >
+                <span className="w-8 h-8 mr-px rounded-full bg-primary flex items-center justify-center text-sm text-fontSecondary">
+                  {currentUser[0]}
                 </span>
+                {currentUser}
               </Link>
               <button
                 onClick={() => signOut()}
@@ -35,7 +43,7 @@ export default function Navbar() {
               >
                 Log Out
               </button>
-            </>
+            </div>
           )}
           {status === "unauthenticated" && (
             <>
