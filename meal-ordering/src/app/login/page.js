@@ -1,14 +1,24 @@
 "use client";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginInProgress, setLoginInProgress] = useState(false);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    try {
+      setLoginInProgress(true);
+      await signIn("credentials", { email, password });
+    } catch (e) {
+      console.log(e.message);
+    } finally {
+      setLoginInProgress(false);
+    }
   };
   return (
     <section className="mx-3 mt-8">
@@ -19,17 +29,24 @@ export default function LoginPage() {
       <form className="block max-w-sm mx-auto" onSubmit={handleFormSubmit}>
         <input
           type="email"
+          name="email"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={loginInProgress}
         />
         <input
           type="password"
+          name="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={loginInProgress}
         />
-        <button type="submit">Login</button>
+
+        <button type="submit" disabled={loginInProgress}>
+          Login
+        </button>
         <div className="my-4 text-center text-gray-500">
           or login with provider
         </div>
