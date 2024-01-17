@@ -31,6 +31,7 @@ export default function Navbar() {
               <Link
                 href={"/profile"}
                 className="no-underline flex items-center mr-2"
+                title="Your Profile"
               >
                 <span className="w-8 h-8 mr-px rounded-full bg-primary flex items-center justify-center text-sm text-fontSecondary">
                   {currentUser[0]}
