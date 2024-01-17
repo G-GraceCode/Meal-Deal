@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -25,10 +26,12 @@ export default function RegisterPage() {
 
       if (res.ok) {
         setUserCreated(true);
-      } else {
+      }
+      if (!res.ok) {
         setError(true);
       }
     } catch (e) {
+      alert(e.message);
     } finally {
       setCreatingUser(false);
     }
@@ -75,7 +78,11 @@ export default function RegisterPage() {
         <div className="my-4 text-center text-gray-500">
           or login with provider
         </div>
-        <button className="flex gap-4 justify-center items-center">
+        <button
+          className="flex gap-4 justify-center items-center"
+          onClick={() => signIn("google", { callbackUrl: "/" })}
+          type="button"
+        >
           <FcGoogle size={25} /> Login with google
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
