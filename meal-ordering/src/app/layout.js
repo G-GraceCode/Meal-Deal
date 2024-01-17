@@ -1,3 +1,4 @@
+import { AppProvider } from "@/components/AppContext";
 import { Roboto } from "next/font/google";
 import Sidenav from "../components/sidebar/Sidenav";
 import Navbar from "../components/navbar/Navbar";
@@ -14,13 +15,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <main className="main">
-          <Sidenav />
-          <section className="bg-bg right-side flex-1">
-            <Navbar />
-            {children}
-          </section>
-        </main>
+        <AppProvider>
+          <main className="main">
+            <Sidenav />
+            <section className="bg-bg right-side flex-1">
+              <Navbar />
+              {children}
+            </section>
+          </main>
+        </AppProvider>
       </body>
     </html>
   );
