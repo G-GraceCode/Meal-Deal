@@ -1,28 +1,71 @@
 "use client";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { Image } from "next/image";
 import { redirect } from "next/navigation";
 
 export default function ProfilePage() {
   const session = useSession();
-  const { status } = session;
-  const userImage = session.data?.user;
-  if (status === "Loading") {
-    return "Loading ...";
-  }
+  console.log("session", session);
+  // const status = session?.status;
+  // const data = session?.data;
+  // console.log("data", data);
+  // const [userName, setUserName] = useState(data?.user?.name || "");
+  // const userImage = data?.user;
 
-  if (status === "unauthenticated") {
-    return redirect("/login");
-  }
+  const handleProfileUpdate = async (e) => {
+    e.preventDefault();
+    // try {
+    //   const res = await fetch("/api/profile", {
+    //     method: "PUT",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ name: userName }),
+    //   });
+    // } catch (e) {
+    //   alert(e.message);
+    // }
+  };
+
+  // if (status === "Loading") {
+  //   return "Loading ...";
+  // }
+
+  // if (status === "unauthenticated") {
+  //   return redirect("/login");
+  // }
 
   return (
     <section className="mb-8">
       <h1 className="text-center text-primary text-4xl mb-4">profile</h1>
-      <form className="max-w-md mx-auto border">
+      <div className="max-w-md mx-auto border">
         <div>
-          <Image src={} width={65} height={65} alt={"avater"} />
+          <div>
+            <Image
+              src={"userImage?.image"}
+              width={65}
+              height={65}
+              alt={"avater"}
+            />
+
+            <button>Replace Avater</button>
+          </div>
         </div>
-      </form>
+
+        <form className="grow" onSubmit={handleProfileUpdate}>
+          <input
+            type="text"
+            placeholder="First Name and Last Name"
+            // value={userName}
+            // onChange={(e) => setUserName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="First Name and Last Name"
+            disabled={true}
+          />
+          <button>Save</button>
+        </form>
+      </div>
     </section>
   );
 }
