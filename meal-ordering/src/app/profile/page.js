@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { Image } from "next/image";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export default function ProfilePage() {
@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const userImage = session.data?.user?.image;
 
   useEffect(() => {
-    if (status === "authenticated,") {
+    if (status === "authenticated") {
       // setthe user name
       setUserName(userInfo?.name);
     }
@@ -44,17 +44,20 @@ export default function ProfilePage() {
         Profile
       </h1>
       <div className="max-w-md mx-auto">
-        <div className="bg-secondary-400 text-center text-fontSecondary">Profile Saved</div>
+        <div className="bg-green-200 text-center py-2 border border-solid border-green-300 my-2 rounded-sm">
+          Profile Saved
+        </div>
 
-        <div className="border md:flex gap-3">
+        <div className="md:flex gap-3">
           <div>
-            <div>
-              {/* <Image
-              src={userImage?.image}
-              width={65}
-              height={65}
-              alt={"avater"}
-            /> */}
+            <div className="p-2 relative">
+              <Image
+                src={userImage}
+                width={65}
+                height={65}
+                alt={"avater"}
+                className="rounded-full mb-1"
+              />
 
               <button>Replace Avater</button>
             </div>

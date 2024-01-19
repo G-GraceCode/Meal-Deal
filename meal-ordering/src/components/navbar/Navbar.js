@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { RiMenuUnfoldFill } from "react-icons/ri";
 import { IoIosNotifications } from "react-icons/io";
+import Image from "next/image";
 
 export default function Navbar({ close }) {
   const session = useSession();
@@ -36,8 +37,17 @@ export default function Navbar({ close }) {
                   className="no-underline flex items-center mr-2"
                   title="Your Profile"
                 >
-                  <span className="w-8 h-8 mr-px rounded-full bg-primary flex items-center justify-center text-sm text-fontSecondary">
-                    {currentUser[0]}
+                  <span className="w-8 h-8 mr-px rounded-full bg-primary flex overflow-hidden items-center justify-center text-sm text-fontSecondary">
+                    {userInfo?.image && (
+                      <Image
+                        className="w-full h-full object-cover"
+                        src={userInfo?.image}
+                        width={64}
+                        height={64}
+                        alt={"avater"}
+                      />
+                    )}
+                    {!userInfo?.image && <>{currentUser[0]}</>}
                   </span>
                   {currentUser}
                 </Link>
