@@ -1,7 +1,7 @@
 import { AppProvider } from "@/components/AppContext";
 import { Roboto } from "next/font/google";
-import Sidenav from "../components/sidebar/Sidenav";
-import Navbar from "../components/navbar/Navbar";
+import Sidenav from "@/components/sidebar/Sidenav";
+import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });

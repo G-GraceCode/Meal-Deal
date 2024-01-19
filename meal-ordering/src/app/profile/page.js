@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useSession } from "next-auth/react";
 import { Image } from "next/image";
 import { redirect } from "next/navigation";
@@ -12,6 +12,12 @@ export default function ProfilePage() {
   // console.log("data", data);
   // const [userName, setUserName] = useState(data?.user?.name || "");
   // const userImage = data?.user;
+
+  useEffect(() => {
+    if(status === "authenticated,"){
+
+    }
+  }, [session])
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -26,44 +32,41 @@ export default function ProfilePage() {
     // }
   };
 
-  // if (status === "Loading") {
-  //   return "Loading ...";
-  // }
+  if (status === "Loading") {
+    return "Loading ...";
+  }
 
-  // if (status === "unauthenticated") {
-  //   return redirect("/login");
-  // }
-
+  if (status === "unauthenticated") {
+    return redirect("/login");
+  }
   return (
-    <section className="mb-8">
-      <h1 className="text-center text-primary text-4xl mb-4">profile</h1>
-      <div className="max-w-md mx-auto border">
+    <section className="mt-8">
+      <h1 className="text-center text-primary text-4xl text-bold mb-4">
+        Profile
+      </h1>
+      <div className="max-w-md mx-auto border md:flex gap-3">
         <div>
           <div>
-            <Image
-              src={"userImage?.image"}
+            {/* <Image
+              src={""}
               width={65}
               height={65}
               alt={"avater"}
-            />
+            /> */}
 
             <button>Replace Avater</button>
           </div>
         </div>
 
-        <form className="grow" onSubmit={handleProfileUpdate}>
+        <form className="grow">
           <input
             type="text"
             placeholder="First Name and Last Name"
             // value={userName}
             // onChange={(e) => setUserName(e.target.value)}
           />
-          <input
-            type="email"
-            placeholder="First Name and Last Name"
-            disabled={true}
-          />
-          <button>Save</button>
+          <input type="email" placeholder="email" disabled={true} />
+          <button type="submit">Save</button>
         </form>
       </div>
     </section>
