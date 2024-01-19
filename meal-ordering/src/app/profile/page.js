@@ -6,6 +6,9 @@ import { redirect } from "next/navigation";
 
 export default function ProfilePage() {
   const [userName, setUserName] = useState("");
+  const [isSaving, setSaving] = useState(false);
+  const [profileSave, setProfileSave] = useState(false);
+
   const session = useSession();
   const status = session.status;
   const userInfo = session.data?.user;
@@ -20,15 +23,15 @@ export default function ProfilePage() {
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
-    // try {
-    //   const res = await fetch("/api/profile", {
-    //     method: "PUT",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ name: userName }),
-    //   });
-    // } catch (e) {
-    //   alert(e.message);
-    // }
+    try {
+      const res = await fetch("/api/profile", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: userName }),
+      });
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   if (status === "Loading") {
@@ -70,7 +73,12 @@ export default function ProfilePage() {
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <input type="email" placeholder="email" disabled={true} />
+            <input
+              type="email"
+              placeholder="email"
+              disabled={true}
+              value={userInfo?.email}
+            />
             <button type="submit">Save</button>
           </form>
         </div>
