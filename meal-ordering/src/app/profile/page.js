@@ -1,23 +1,22 @@
 "use client";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { Image } from "next/image";
 import { redirect } from "next/navigation";
 
 export default function ProfilePage() {
+  const [userName, setUserName] = useState("");
   const session = useSession();
-  console.log("session", session);
-  // const status = session?.status;
-  // const data = session?.data;
-  // console.log("data", data);
-  // const [userName, setUserName] = useState(data?.user?.name || "");
-  // const userImage = data?.user;
+  const status = session.status;
+  const userInfo = session.data?.user;
+  const userImage = session.data?.user?.image;
 
   useEffect(() => {
-    if(status === "authenticated,"){
-
+    if (status === "authenticated,") {
+      // setthe user name
+      setUserName(userInfo?.name);
     }
-  }, [session])
+  }, [session, status]);
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -44,30 +43,34 @@ export default function ProfilePage() {
       <h1 className="text-center text-primary text-4xl text-bold mb-4">
         Profile
       </h1>
-      <div className="max-w-md mx-auto border md:flex gap-3">
-        <div>
+      <div className="max-w-md mx-auto">
+        <div className="bg-secondary-400 text-center text-fontSecondary">Profile Saved</div>
+
+        <div className="border md:flex gap-3">
           <div>
-            {/* <Image
-              src={""}
+            <div>
+              {/* <Image
+              src={userImage?.image}
               width={65}
               height={65}
               alt={"avater"}
             /> */}
 
-            <button>Replace Avater</button>
+              <button>Replace Avater</button>
+            </div>
           </div>
-        </div>
 
-        <form className="grow">
-          <input
-            type="text"
-            placeholder="First Name and Last Name"
-            // value={userName}
-            // onChange={(e) => setUserName(e.target.value)}
-          />
-          <input type="email" placeholder="email" disabled={true} />
-          <button type="submit">Save</button>
-        </form>
+          <form className="grow">
+            <input
+              type="text"
+              placeholder="First Name and Last Name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <input type="email" placeholder="email" disabled={true} />
+            <button type="submit">Save</button>
+          </form>
+        </div>
       </div>
     </section>
   );
