@@ -24,13 +24,22 @@ export default function ProfilePage() {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
+      setIsSaving(true);
       const res = await fetch("/api/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: userName }),
       });
+      if (res.ok) {
+        setIsSaving(false);
+        setProfileSave(true);
+      }
     } catch (e) {
       alert(e.message);
+    } finally {
+      setTimeout(() => {
+        setProfileSave(false);
+      }, 6000);
     }
   };
 
@@ -47,9 +56,17 @@ export default function ProfilePage() {
         Profile
       </h1>
       <div className="max-w-md mx-auto">
-        <div className="bg-green-200 text-center py-2 border border-solid border-green-300 my-2 rounded-sm">
-          Profile Saved
-        </div>
+        {profileSave && (
+          <div className="bg-green-200 text-center py-2 border border-solid border-green-300 my-2 rounded-sm">
+            Profile Saved
+          </div>
+        )}
+
+        {isSaving && (
+          <div className="bg-blue-200 text-center py-2 border border-solid border-blue-300 my-2 rounded-sm">
+            Saving ...
+          </div>
+        )}
 
         <div className="md:flex gap-3">
           <div>
