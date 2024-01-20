@@ -8,6 +8,7 @@ export default function ProfilePage() {
   const [userName, setUserName] = useState("");
   const [isSaving, setSaving] = useState(false);
   const [profileSave, setProfileSave] = useState(false);
+  const [image, setImage] = useState("");
 
   const session = useSession();
   const status = session.status;
@@ -18,6 +19,7 @@ export default function ProfilePage() {
     if (status === "authenticated") {
       // setthe user name
       setUserName(userInfo?.name);
+      setImage(userImage);
     }
   }, [session, status]);
 
@@ -28,7 +30,7 @@ export default function ProfilePage() {
       const res = await fetch("/api/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: userName }),
+        body: JSON.stringify({ name: userName, image: image }),
       });
       if (res.ok) {
         setTimeout(() => {
@@ -92,21 +94,27 @@ export default function ProfilePage() {
 
         <div className="md:flex gap-3">
           <div>
-            <div className="p-2 relative">
-              <Image
-                src={userImage}
-                width={65}
-                height={65}
-                alt={"avater"}
-                className="rounded-full mb-1"
-              />
-              <label>
-                <ipnut
+            <div className="p-2 relative text-center">
+              {image && (
+                <Image
+                  src={image}
+                  width={65}
+                  height={65}
+                  alt={"avater"}
+                  className="rounded-full mb-2"
+                />
+              )}
+              <label htmlFor="file">
+                <input
                   type="file"
+                  id="file"
                   className="hidden"
                   onChange={handleFileChange}
                 />
-                <span className="border rounded-lg p-2 text-center border-gray-300 cursor-pointer">
+                <span
+                  id="file"
+                  className="border rounded-lg p-2 text-center border-gray-400 border-solid cursor-pointer"
+                >
                   Edit Avater
                 </span>
               </label>

@@ -9,10 +9,19 @@ export async function PUT() {
 
   const session = await getServerSession(authOption);
   const email = session.user?.email;
+  const userUploads = {};
 
-  if ("name" in body) {
+  if ("name" in data) {
+    userUploads.name = data.name;
+  }
+
+  if ("image" in data) {
+    userUploads.image = data.image;
+  }
+
+  if (Object.keys(userUploads).length > 0) {
     // update user name
-    await User.updateOne({ email }, { name: body.name });
+    await User.updateOne({ email }, { userUploads });
   }
   return Response.json(true);
 }
