@@ -31,8 +31,10 @@ export default function ProfilePage() {
         body: JSON.stringify({ name: userName }),
       });
       if (res.ok) {
-        setIsSaving(false);
-        setProfileSave(true);
+        setTimeout(() => {
+          setIsSaving(false);
+          setProfileSave(true);
+        }, 7000);
       }
     } catch (e) {
       alert(e.message);
@@ -40,6 +42,26 @@ export default function ProfilePage() {
       setTimeout(() => {
         setProfileSave(false);
       }, 6000);
+    }
+  };
+
+  //handleFIleChange
+
+  const handleFileChange = async (e) => {
+    const files = e.target.files;
+    if (files.length === 1) {
+      const data = new FormData();
+      data.set("file", files[0]);
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      if (res.ok) {
+        alert("Photo upload succefully");
+      }
+    } else {
+      alert("Pleas Chose a File");
     }
   };
 
@@ -78,8 +100,16 @@ export default function ProfilePage() {
                 alt={"avater"}
                 className="rounded-full mb-1"
               />
-
-              <button>Replace Avater</button>
+              <label>
+                <ipnut
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+                <span className="border rounded-lg p-2 text-center border-gray-300 cursor-pointer">
+                  Edit Avater
+                </span>
+              </label>
             </div>
           </div>
 
