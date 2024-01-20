@@ -21,7 +21,7 @@ export async function PUT() {
 
   if (Object.keys(userUploads).length > 0) {
     // update user name
-    await User.updateOne({ email }, { userUploads });
+    await User.updateOne({ email }, userUploads);
   }
   return Response.json(true);
 }

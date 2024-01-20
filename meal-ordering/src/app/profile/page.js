@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import InfoBox from "@/components/layout/InfoBox";
+import SuccessBox from "@/components/layout/SuccessBox";
 
 export default function ProfilePage() {
   const [userName, setUserName] = useState("");
   const [isSaving, setSaving] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [profileSave, setProfileSave] = useState(false);
   const [image, setImage] = useState("");
 
@@ -52,6 +55,7 @@ export default function ProfilePage() {
   const handleFileChange = async (e) => {
     const files = e.target.files;
     if (files.length === 1) {
+      setIsUploading(true);
       const data = new FormData();
       data.set("file", files[0]);
       const res = await fetch("/api/upload", {
@@ -60,10 +64,11 @@ export default function ProfilePage() {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (res.ok) {
+        setIsUploading(false);
         alert("Photo upload succefully");
       }
     } else {
-      alert("Pleas Chose a File");
+      alert("Upload failed: Please Chose a File");
     }
   };
 
@@ -80,17 +85,10 @@ export default function ProfilePage() {
         Profile
       </h1>
       <div className="max-w-md mx-auto">
-        {profileSave && (
-          <div className="bg-green-200 text-center py-2 border border-solid border-green-300 my-2 rounded-sm">
-            Profile Saved
-          </div>
-        )}
+        {profileSave && <SuccessBox>Profile Saved</SuccessBox>}
 
-        {isSaving && (
-          <div className="bg-blue-200 text-center py-2 border border-solid border-blue-300 my-2 rounded-sm">
-            Saving ...
-          </div>
-        )}
+        {isSaving && <InfoBox>Saving ...</InfoBox>}
+        {isUploading && <InfoBox>Uploading ...</InfoBox>}
 
         <div className="md:flex gap-3">
           <div>
