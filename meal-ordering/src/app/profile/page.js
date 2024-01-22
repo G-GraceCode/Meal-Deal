@@ -54,21 +54,26 @@ export default function ProfilePage() {
 
   const handleFileChange = async (e) => {
     const files = e.target.files;
-    if (files.length === 1) {
-      setIsUploading(true);
-      const data = new FormData();
-      data.set("file", files[0]);
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: data,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      if (res.ok) {
-        setIsUploading(false);
-        alert("Photo upload succefully");
+    if (files.length > 0) {
+      try {
+        setIsUploading(true);
+        const data = new FormData();
+        data.set("file", files[0]);
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: data,
+        });
+        if (res.ok) {
+          setIsUploading(false);
+          alert("Photo upload succefully");
+        }
+        if(!res.ok){
+          setIsUploading(false);
+        alert("Upload failed: Please Chose a File");
+        }
+      } catch (e) {
+        alert(e.message)
       }
-    } else {
-      alert("Upload failed: Please Chose a File");
     }
   };
 
