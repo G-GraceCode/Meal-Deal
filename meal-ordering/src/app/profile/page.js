@@ -10,6 +10,11 @@ import toast from "react-hot-toast";
 export default function ProfilePage() {
   const [userName, setUserName] = useState("");
   const [image, setImage] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
 
   const session = useSession();
   const status = session.status;
@@ -24,6 +29,16 @@ export default function ProfilePage() {
     }
   }, [session, status]);
 
+  const UserData = {
+    name: userName,
+    image,
+    streetAddress,
+    postalCode,
+    phoneNum,
+    city,
+    country,
+  };
+
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -31,7 +46,7 @@ export default function ProfilePage() {
         const res = await fetch("/api/profile", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: userName, image: image }),
+          body: JSON.stringify(UserData),
         });
         if (res.ok) resolve();
         else reject();
@@ -89,7 +104,7 @@ export default function ProfilePage() {
       <h1 className="text-center text-primary text-4xl text-bold mb-4">
         Profile
       </h1>
-      <div className="max-w-md mx-auto">
+      <div className="max-w-xl mx-auto">
         <div className="md:flex gap-3">
           <div>
             <div className="p-2 relative text-center">
@@ -120,17 +135,65 @@ export default function ProfilePage() {
           </div>
 
           <form className="grow" onSubmit={handleProfileUpdate}>
+            <label>First and Last Name</label>
             <input
               type="text"
               placeholder="First Name and Last Name"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
+            <label>email</label>
+
             <input
               type="email"
               placeholder="email"
               disabled={true}
               value={userInfo?.email}
+            />
+            <label>Phone number</label>
+
+            <input
+              type="text"
+              placeholder="Enter Phone Number"
+              value={phoneNum}
+              onChange={(e) => setPhoneNum(e.target.value)}
+            />
+            <label>Street Address</label>
+
+            <input
+              type="text"
+              placeholder="Enter street Address"
+              value={streetAddress}
+              onChange={(e) => setStreetAddress(e.target.value)}
+            />
+            <div className="flex gap-2">
+              <div>
+                <label>Postal Code</label>
+                <input
+                  type="text"
+                  placeholder="Postal Code"
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <label>City</label>
+                <input
+                  type="tel"
+                  placeholder="City"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </div>
+            </div>
+            <label>Country</label>
+
+            <input
+              type="text"
+              placeholder="Enter Phone Number"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
             />
             <button type="submit">Save</button>
           </form>
