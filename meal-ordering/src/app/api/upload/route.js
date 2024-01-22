@@ -14,6 +14,7 @@ export async function POST(req) {
 
   if (data.get("file")) {
     const getFile = data.get("file");
+    console.log("file", getFile);
     const ext = getFile.name.split(".").slice(-1)[0];
     const fileName = uniqid() + "." + ext;
     // fs.renameSync(data.name, fileName);
@@ -24,15 +25,22 @@ export async function POST(req) {
     // });
     // console.log("res", result);
 
-    // const cloudImage = await cloudinary.url(fileName, {
-    //   width: 500,
-    //   height: 500,
-    //   crop: "pad",
-    // });
+    const cloudImage = cloudinary.url(fileName);
+    console.log("clod", cloudImage);
+
+    const tranImage = cloudinary.image(fileName, {
+      type: getFile.type,
+      transformation: [
+        { gravity: "face", height: 300, width: 300, crop: "fill" },
+        { radius: "max" },
+        { fetch_format: "auto" },
+      ],
+    });
+    console.log("clod", tranImage);
 
     const uploadedImage = await cloudinary.uploader.upload(fileName, {
+      public_id: fileName.split(".")[0],
       resource_type: "auto",
-      public_id: "foodOrder-avater",
       use_filename: true,
     });
 

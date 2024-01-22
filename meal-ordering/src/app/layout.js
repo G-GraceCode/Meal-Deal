@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import Sidenav from "@/components/sidebar/Sidenav";
 import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="main">
           <AppProvider>
+            <Toaster />
             <Sidenav />
             <section className="bg-bg right-side flex-1">
               <Navbar />

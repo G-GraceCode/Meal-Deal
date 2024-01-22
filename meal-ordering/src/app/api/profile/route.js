@@ -1,11 +1,12 @@
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
 import mongoose from "mongoose";
-import { User } from "@/models/User";
+import User from "@/models/User";
+import { getServerSession } from "next-auth";
 
-export async function PUT() {
+export async function PUT(req) {
   mongoose.connect(process.env.DB_URI);
 
-  const body = await req.json();
+  const data = await req.json();
 
   const session = await getServerSession(authOption);
   const email = session.user?.email;
