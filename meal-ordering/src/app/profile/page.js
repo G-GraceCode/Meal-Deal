@@ -5,7 +5,9 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import InfoBox from "@/components/layout/InfoBox";
 import SuccessBox from "@/components/layout/SuccessBox";
+import Usertabs from "@/components/layout/Usertabs";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function ProfilePage() {
   const [userName, setUserName] = useState("");
@@ -15,6 +17,7 @@ export default function ProfilePage() {
   const [country, setCountry] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const session = useSession();
   const status = session.status;
@@ -26,6 +29,17 @@ export default function ProfilePage() {
       // setthe user name
       setUserName(userInfo?.name);
       setImage(userImage);
+
+      fetch("/api/profile").then((response) => {
+        response.json().then((data) => {
+          setIsAdmin(data.admin);
+          setPhoneNum(data.phone);
+          setCity(data.city);
+          setCountry(data.country);
+          setStreetAddress(data.streetAddress);
+          setPostalCode(data.postalcode);
+        });
+      });
     }
   }, [session, status]);
 
@@ -37,6 +51,7 @@ export default function ProfilePage() {
     phoneNum,
     city,
     country,
+    isAdmin,
   };
 
   const handleProfileUpdate = async (e) => {
@@ -101,10 +116,9 @@ export default function ProfilePage() {
   }
   return (
     <section className="mt-8">
-      <h1 className="text-center text-primary text-4xl text-bold mb-4">
-        Profile
-      </h1>
-      <div className="max-w-xl mx-auto">
+      <Usertabs isAdmin={isAdmin} />
+
+      <div className="max-w-xl mx-auto mt-4">
         <div className="md:flex gap-3">
           <div>
             <div className="p-2 relative text-center">
