@@ -3,11 +3,13 @@ import Usertabs from "@/components/layout/Usertabs";
 import { userProfile } from "@/components/UserProfile";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { IoClose } from "react-icons/io5";
 
 export default function CategoriesPage() {
-  const [newCategoryName, setNewCategoryName] = useState("");
+  const [CategoryName, setCategoryName] = useState("");
   const { loading: profileLoading, data: profileData } = userProfile();
   const [categorys, setCategorys] = useState([]);
+  const [editCategory, setEditCategory] = useState(null);
 
   useEffect(() => {
     getCategory();
@@ -24,19 +26,29 @@ export default function CategoriesPage() {
   const handleNewCategory = async (e) => {
     e.preventDefault();
 
-    const creatingPromise = new Promise((resolve, reject) => {
-      const res = fetch("/api/categories", {
-        method: "POST",
+    const creatingPromise = new Promise(async (resolve, reject) => {
+      const data = { name: CategoryName };
+
+      if (editCategory) {
+        data._id = editCategory._id;
+      }
+
+      const res = await fetch("/api/categories", {
+        method: editCategory ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: newCategoryName }),
+        body: JSON.stringify(data),
       });
-      getNewCategory();
+      setCategoryName("");
+      getCategory();
+      setEditCategory(null);
       if (res.ok) resolve();
       else reject();
     });
     await toast.promise(creatingPromise, {
-      loading: "Creating New Category...",
-      success: "Category Created",
+      loading: editCategory
+        ? "Updating Category.."
+        : "Creating New Category...",
+      success: editCategory ? "Category Updated" : "Category Created",
       error: "Error, sorr...",
     });
   };
@@ -55,23 +67,42 @@ export default function CategoriesPage() {
       <form onSubmit={handleNewCategory} className="mt-8">
         <div className="flex items-center">
           <div className="grow">
-            <label>New Cataegory Name</label>
+            <label>
+              {editCategory ? "Update Category" : "New Cataegory Name"}
+              {editCategory && (
+                <>
+                  : <b>{editCategory.name}</b>
+                </>
+              )}
+            </label>
             <input
               type="text"
-              value={newCategoryName}
-              onChange={(e) => setNewCategoryName(e.target.value)}
+              value={CategoryName}
+              onChange={(e) => setCategoryName(e.target.value)}
             />
           </div>
-          <button>Create</button>
+          <button className="bg-primary text-fontSecondary">
+            {editCategory ? "Update" : "Create"}
+          </button>
         </div>
       </form>
       <div>
-        {categorys.length > 0 &&
-          categorys.map((item) => (
-            <button>
-              <span>{item.name}</span>
-            </button>;
-          ))}
+        <div className="md:flex items-center gap-2 justify-center max-w-xs mx-auto">
+          {categorys.length > 0 &&
+            categorys.map((item) => (
+              <button
+                key={item._id}
+                className="flex items-center justify-between px-4"
+                onClick={() => {
+                  setEditCategory(item);
+                  setCategoryName(item.name);
+                }}
+              >
+                <span>{item.name}</span>
+                <IoClose />
+              </button>
+            ))}
+        </div>
       </div>
     </section>
   );

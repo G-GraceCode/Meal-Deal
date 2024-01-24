@@ -14,3 +14,9 @@ export async function GET() {
 
   return Response.json(await Category.find());
 }
+
+export async function PUT(req) {
+  const { _id, name } = await req.json();
+  const category = await Category.updateOne({ _id }, { name });
+  return Response.json(true);
+}

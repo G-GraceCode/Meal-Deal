@@ -19,8 +19,8 @@ export default function Usertabs({ isAdmin }) {
             Categories
           </Link>
           <Link
-            className={path === "/menu-items" ? "active" : ""}
-            href={"/menu-items"}
+            className={path === "/menuitems" ? "active" : ""}
+            href={"/menuitems"}
           >
             Menu Items
           </Link>
