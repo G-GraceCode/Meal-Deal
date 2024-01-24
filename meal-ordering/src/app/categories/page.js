@@ -27,7 +27,7 @@ export default function CategoriesPage() {
     const creatingPromise = new Promise((resolve, reject) => {
       const res = fetch("/api/categories", {
         method: "POST",
-        header: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newCategoryName }),
       });
       getNewCategory();
