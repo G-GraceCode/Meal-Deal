@@ -9,7 +9,7 @@ import { BsFillCartFill, BsFillSaveFill } from "react-icons/bs";
 import { CgMenuGridO } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
 import { IoSearchOutline } from "react-icons/io5";
-import { FaUserFriends, FaWallet } from "react-icons/fa";
+import { FaUserFriends, FaWallet, FaUsers } from "react-icons/fa";
 import { MdFavorite, MdHelp } from "react-icons/md";
 import Image from "next/image";
 import { IoIosSunny } from "react-icons/io";
@@ -42,13 +42,16 @@ export default function Sidenav() {
           <li className="flex flex-col items-center">
             <CgMenuGridO size={22} className="mb-2" /> <p>Menu</p>
           </li>
+          <li className="flex flex-col items-center">
+            <MdFavorite size={22} className="mb-2" /> Favorites
+          </li>
         </ul>
         <ul className="flex flex-col gap-1 py-4 text-gray-800 text-xs font-medium nav_list">
           <li className="flex flex-col items-center">
             <TbTruckDelivery size={22} className="mb-2" /> <p>Orders</p>
           </li>
           <li className="flex flex-col items-center">
-            <MdFavorite size={22} className="mb-2" /> Favorites
+            <FaUsers size={22} className="mb-2" /> <p>Users</p>
           </li>
           {/* <li className="flex flex-col items-center">
             <FaWallet size={22} className="mr-2" /> <p>Wallet </p>

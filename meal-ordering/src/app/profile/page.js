@@ -27,7 +27,6 @@ export default function ProfilePage() {
   useEffect(() => {
     if (status === "authenticated") {
       // setthe user name
-      redirect("/");
       setUserName(userInfo?.name);
       setImage(userImage);
 
