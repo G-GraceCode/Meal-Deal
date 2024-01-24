@@ -27,6 +27,7 @@ export default function ProfilePage() {
   useEffect(() => {
     if (status === "authenticated") {
       // setthe user name
+      redirect("/");
       setUserName(userInfo?.name);
       setImage(userImage);
 
@@ -122,15 +123,17 @@ export default function ProfilePage() {
         <div className="md:flex gap-3">
           <div>
             <div className="p-2 relative text-center">
-              {image && (
-                <Image
-                  src={image}
-                  width={65}
-                  height={65}
-                  alt={"avater"}
-                  className="rounded-full mb-2"
-                />
-              )}
+              <div className="w-20 h-20 mx-auto overflow-hidden rounded-full mb-2">
+                {image && (
+                  <Image
+                    src={image}
+                    width={45}
+                    height={45}
+                    alt={"avater"}
+                    className="object-center w-full"
+                  />
+                )}
+              </div>
               <label htmlFor="file">
                 <input
                   type="file"

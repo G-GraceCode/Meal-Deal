@@ -13,7 +13,5 @@ const userDetailSchema = new Schema(
   { timestamps: true },
 );
 
-const UserDatails =
-  models?.UserDetials || model("UserDatails", userDetailSchema);
-
-export default UserDatails;
+export const UserDetail =
+  models?.UserDetail || model("UserDetail", userDetailSchema);

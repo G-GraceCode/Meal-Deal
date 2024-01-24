@@ -1,21 +1,21 @@
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
 import mongoose from "mongoose";
 import User from "@/models/User";
-import UserDetails from "@/models/UserDetails";
+import { UserDetail } from "@/models/UserDetails";
 import { getServerSession } from "next-auth";
 
 export async function PUT(req) {
   mongoose.connect(process.env.DB_URI);
 
   const data = await req.json();
-  const { name, email, ...otherDetails } = data;
+  const { name, image, ...otherDetails } = data;
 
   const session = await getServerSession(authOption);
-  const Email = session.user?.email;
+  const email = session.user?.email;
 
-  await User.updateOne({ Email }, { name, email });
+  await User.updateOne({ email }, { name, image });
 
-  await UserDetails.updateOne({ Email }, otherDetails);
+  await UserDetail.findOneAndUpdate({ email }, otherDetails, { upsert: true });
 
   return Response.json(true);
 }
@@ -29,6 +29,6 @@ export async function GET() {
     return res.status(401).json({});
   }
   const user = await User.findOne({ email }).lean(); // use the lean method to get the user detail once
-  const userDetail = await UserDetails.findOne({ email }).lean();
+  const userDetail = await UserDetail.findOne({ email }).lean();
   return Response.json({ ...user, ...userDetail });
 }
