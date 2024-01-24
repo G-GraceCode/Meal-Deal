@@ -16,7 +16,7 @@ export default function CategoriesPage() {
   const getCategory = () => {
     fetch("/api/categories").then((res) => {
       res.json().then((categories) => {
-        setCategorys(categories.name);
+        setCategorys(categories);
       });
     });
   };
@@ -67,11 +67,11 @@ export default function CategoriesPage() {
       </form>
       <div>
         {categorys.length > 0 &&
-          categorys.map((item) => {
+          categorys.map((item) => (
             <button>
               <span>{item.name}</span>
             </button>;
-          })}
+          ))}
       </div>
     </section>
   );
