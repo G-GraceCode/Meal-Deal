@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import InfoBox from "@/components/layout/InfoBox";
 import SuccessBox from "@/components/layout/SuccessBox";
 import Usertabs from "@/components/layout/Usertabs";
+import ImageEdit from "@/components/layout/ImageEdit";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ export default function ProfilePage() {
           setCity(data.city);
           setCountry(data.country);
           setStreetAddress(data.streetAddress);
-          setPostalCode(data.postalcode);
+          setPostalCode(data.postalCode);
         });
       });
     }
@@ -77,36 +77,6 @@ export default function ProfilePage() {
     }
   };
 
-  //handleFIleChange
-
-  const handleFileChange = async (e) => {
-    const files = e.target.files;
-    if (files.length > 0) {
-      try {
-        const data = new FormData();
-        data.set("file", files[0]);
-
-        const uploadingPromise = new Promise(async (resolve, reject) => {
-          const res = await fetch("/api/upload", {
-            method: "POST",
-            body: data,
-            headers: { "Content-Type": "multipart/form-data" },
-          });
-          if (res.ok) resolve();
-          else reject();
-        });
-
-        await toast.promise(uploadingPromise, {
-          loading: "Uploading",
-          success: "Profile Saved",
-          error: "Profile Not Saved",
-        });
-      } catch (e) {
-        alert(e.message);
-      }
-    }
-  };
-
   if (status === "Loading") {
     return "Loading ...";
   }
@@ -122,31 +92,9 @@ export default function ProfilePage() {
         <div className="md:flex gap-3">
           <div>
             <div className="p-2 relative text-center">
-              <div className="w-20 h-20 mx-auto overflow-hidden rounded-full mb-2">
-                {image && (
-                  <Image
-                    src={image}
-                    width={45}
-                    height={45}
-                    alt={"avater"}
-                    className="object-center w-full"
-                  />
-                )}
+              <div className="mx-auto overflow-hidden rounded-lg mb-2">
+                <ImageEdit link={image} setLink={setImage} />
               </div>
-              <label htmlFor="file">
-                <input
-                  type="file"
-                  id="file"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-                <span
-                  id="file"
-                  className="border rounded-lg p-2 text-center border-gray-400 border-solid cursor-pointer"
-                >
-                  Edit Avater
-                </span>
-              </label>
             </div>
           </div>
 

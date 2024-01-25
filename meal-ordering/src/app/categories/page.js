@@ -81,7 +81,7 @@ export default function CategoriesPage() {
               onChange={(e) => setCategoryName(e.target.value)}
             />
           </div>
-          <button className="bg-primary text-fontSecondary">
+          <button className="bg-primary text-fontSecondary w-fit">
             {editCategory ? "Update" : "Create"}
           </button>
         </div>
