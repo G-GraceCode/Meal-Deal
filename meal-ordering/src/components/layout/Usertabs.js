@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaUserFriends, FaWallet, FaUsers } from "react-icons/fa";
 
 export default function Usertabs({ isAdmin }) {
   const path = usePathname();
@@ -25,7 +26,7 @@ export default function Usertabs({ isAdmin }) {
             Menu Items
           </Link>
           <Link className={path === "/user" ? "active" : ""} href={"/users"}>
-            Users
+            <FaUsers /> Users
           </Link>
         </>
       )}

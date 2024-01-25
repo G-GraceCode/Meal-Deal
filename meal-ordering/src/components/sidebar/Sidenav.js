@@ -10,7 +10,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaUserFriends, FaWallet, FaUsers } from "react-icons/fa";
-import { MdFavorite, MdHelp } from "react-icons/md";
+import { MdFavorite, MdHelp, MdAdminPanelSettings } from "react-icons/md";
 import Image from "next/image";
 import { IoIosSunny } from "react-icons/io";
 
@@ -48,20 +48,23 @@ export default function Sidenav() {
         </ul>
         <ul className="flex flex-col gap-1 py-4 text-gray-800 text-xs font-medium nav_list">
           <li className="flex flex-col items-center">
+            <MdAdminPanelSettings size={22} className="mb-2" /> <p>Admin</p>
+          </li>
+          {/* <li className="flex flex-col items-center">
             <TbTruckDelivery size={22} className="mb-2" /> <p>Orders</p>
           </li>
           <li className="flex flex-col items-center">
             <FaUsers size={22} className="mb-2" /> <p>Users</p>
-          </li>
+          </li> */}
           {/* <li className="flex flex-col items-center">
             <FaWallet size={22} className="mr-2" /> <p>Wallet </p>
           </li> */}
-          <li className="flex flex-col items-center">
+          {/* <li className="flex flex-col items-center">
             <AiFillTag size={22} className="mb-2" /> <p> Promo's</p>
           </li>
           <li className="flex flex-col items-center">
             <BsFillSaveFill size={22} className="mb-2" /> <p> Best Ones </p>
-          </li>
+          </li> */}
           {/* <li className="flex flex-col items-center">
             <FaUserFriends size={22} className="mb-2" /> Invite Friends
           </li> */}
