@@ -11,7 +11,7 @@ export default function Usertabs({ isAdmin }) {
     <div className="flex gap-2 tabs items-center justify-center w-fit mx-auto bg-gray-300 rounded-full">
       <Link
         className={`${path === "/profile" ? "active" : ""} flex items-center gap-2`}
-        href={"/profile"}
+        href="/profile"
       >
         <FaUser size={19} /> Profile
       </Link>
@@ -20,19 +20,19 @@ export default function Usertabs({ isAdmin }) {
         <>
           <Link
             className={`${path === "/categories" ? "active" : ""} flex items-center gap-2`}
-            href={"/categories"}
+            href="/categories"
           >
             <BiSolidCategoryAlt size={20} /> Categories
           </Link>
           <Link
-            className={`${path === "/menu-items" ? "active" : ""} flex items-center gap-2`}
-            href={"/menuitems"}
+            className={`${path.includes("/menu-items") ? "active" : ""} flex items-center gap-2`}
+            href="/menu-items"
           >
             <CgMenuGridO size={20} /> Menu Items
           </Link>
           <Link
             className={`${path === "/user" ? "active" : ""} flex items-center gap-2`}
-            href={"/users"}
+            href="/users"
           >
             <FaUsers size={20} /> Users
           </Link>

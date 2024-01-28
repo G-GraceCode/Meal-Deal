@@ -11,7 +11,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaUserFriends, FaWallet, FaUsers } from "react-icons/fa";
 import { MdFavorite, MdHelp, MdAdminPanelSettings } from "react-icons/md";
-import Image from "next/image";
+// import Image from "next/image";
 import { IoIosSunny } from "react-icons/io";
 
 export default function Sidenav() {
@@ -19,7 +19,7 @@ export default function Sidenav() {
     <>
       <aside className="sticky top-0 bottom-0 flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
         <div className="relative bg-secondary w-full h-12 flex items-center justify-center">
-          <Image
+          <img
             src={"/meal.png"}
             width={100}
             height={100}

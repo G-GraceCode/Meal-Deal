@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -7,10 +8,10 @@ import SuccessBox from "@/components/layout/SuccessBox";
 import Usertabs from "@/components/layout/Usertabs";
 import ImageEdit from "@/components/layout/ImageEdit";
 import toast from "react-hot-toast";
-import Link from "next/link";
 
 export default function ProfilePage() {
   const [userName, setUserName] = useState("");
+  const [isEmail, setIsEmail] = useState("")
   const [image, setImage] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
@@ -30,8 +31,8 @@ export default function ProfilePage() {
       setUserName(userInfo?.name);
       setImage(userImage);
 
-      fetch("/api/profile").then((response) => {
-        response.json().then((data) => {
+      fetch("/api/profile").then((res) => {
+        res.json().then((data) => {
           setIsAdmin(data.admin);
           setPhoneNum(data.phone);
           setCity(data.city);
@@ -41,7 +42,7 @@ export default function ProfilePage() {
         });
       });
     }
-  }, [session, status]);
+  }, [userInfo, status]);
 
   const UserData = {
     name: userName,
@@ -113,6 +114,7 @@ export default function ProfilePage() {
               placeholder="email"
               disabled={true}
               value={userInfo?.email}
+              onChange = {e => setIsEmail(e.target.value)}
             />
             <label>Phone number</label>
 

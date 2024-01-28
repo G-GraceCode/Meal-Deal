@@ -1,9 +1,10 @@
 import { AppProvider } from "@/components/AppContext";
 import { Roboto } from "next/font/google";
-import Sidenav from "@/components/sidebar/Sidenav";
-import Navbar from "@/components/navbar/Navbar";
+import Sidenav from "@/components/Sidenav";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -21,8 +22,10 @@ export default function RootLayout({ children }) {
           <main className="main">
             <Sidenav />
             <div className="bg-bg right-side flex-1">
-              <Navbar />
-              {children}
+              <Suspense fallback={<p>Loading...</p>}>
+                <Navbar />
+                {children}
+              </Suspense>
             </div>
           </main>
         </AppProvider>

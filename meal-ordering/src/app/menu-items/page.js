@@ -1,35 +1,52 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userProfile } from "@/components/UserProfile";
 import Usertabs from "@/components/layout/Usertabs";
-import ImageEdit from "@/components/layout/ImageEdit";
+import Link from "next/link";
+import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function MenuItemsPage() {
-  const [image, setImage] = useState("");
+  const { loading, data } = userProfile();
+
+  const [items, isItems] = useState([]);
+
+  useEffect(() => {
+    getMenuItems();
+  }, []);
+
+  const getMenuItems = async () => {
+    const res = await fetch("/api/menu-items", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.ok) {
+      res.json().then((data) => {
+        setItems(data);
+      });
+    }
+  };
+
+  if (loading) {
+    return "Loading User Info...";
+  }
+  if (!data.admin) {
+    return "Not an Admin";
+  }
 
   return (
     <section className="mt-8">
       <Usertabs isAdmin={true} />
-      <form className="mt-8 max-w-md mx-auto">
-        <div
-          className="grid items-start gap4"
-          style={{ gridTemplateColumn: ".3fr .7fr" }}
+      <div className="mt-8 text-center">
+        <Link
+          href={"/menu-items/new"}
+          className="no-underline text-center text-gray-500 flex items-center justify-center"
         >
-          <div>
-            <ImageEdit link={image} setLink={setImage} />
-          </div>
-
-          <div className="grow">
-            <label>Item Name</label>
-            <input type="text" placeholder="Item Name" />
-            <label>Description</label>
-            <input type="text" placeholder="Item Name" />
-            <label>Price</label>
-            <input type="text" placeholder="Item Name" />
-            <button type="submit">Save</button>
-          </div>
-        </div>
-      </form>
+          Create New Menu Item <IoChevronForwardOutline size={20} />
+        </Link>
+      </div>
+      <div>
+        {items.length > 0 && items.map((item) => <div>{item.name}</div>)}
+      </div>
     </section>
   );
 }

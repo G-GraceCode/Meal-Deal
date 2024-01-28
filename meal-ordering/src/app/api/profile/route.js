@@ -26,7 +26,7 @@ export async function GET() {
   const email = session?.user?.email;
 
   if (!email) {
-    return res.status(401).json({});
+    return Response.json({});
   }
   const user = await User.findOne({ email }).lean(); // use the lean method to get the user detail once
   const userDetail = await UserDetail.findOne({ email }).lean();
