@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import toast from "react-hot-toast";
-// import Image from "next/image";
+import Image from "next/image";
 
 export default function ImageEdit({ link, setLink }) {
   // const [link ,setLink] = useState('')
@@ -42,7 +42,7 @@ export default function ImageEdit({ link, setLink }) {
   return (
     <>
       {link && (
-        <img
+        <Image
           src={link}
           width={50}
           height={50}

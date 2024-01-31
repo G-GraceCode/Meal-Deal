@@ -45,7 +45,7 @@ export default function RegisterPage() {
       {userCreated && (
         <div className="text-center mb-2 text-xl">
           Accounted Created,Login Now{" "}
-          <Link className="underline" href="/login">
+          <Link className="underline" prefetch={false} href="/login">
             Login
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function RegisterPage() {
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
           Existing account?{" "}
-          <Link className="underline" href="/login">
+          <Link className="underline" href="/login" prefetch={false}>
             Login here &raquo;
           </Link>
         </div>
