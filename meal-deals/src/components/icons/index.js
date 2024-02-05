@@ -9,6 +9,10 @@ import Light from "./Light";
 import Favorite from "./Favorite";
 import Menu from "./Menu";
 import Left from "./Left";
+import Plus from "./Plus";
+import ChevronUp from "./ChevronUp";
+import ChevronDown from "./ChevronDown";
+import Close from "./Close";
 
 export {
   Home,
@@ -22,4 +26,8 @@ export {
   Favorite,
   Menu,
   Left,
+  Plus,
+  ChevronUp,
+  ChevronDown,
+  Close,
 };
