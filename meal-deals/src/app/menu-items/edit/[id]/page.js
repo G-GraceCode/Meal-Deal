@@ -3,9 +3,7 @@ import { userProfile } from "@/components/UserProfile";
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import Usertabs from "@/components/layout/Usertabs";
-import ImageEdit from "@/components/layout/ImageEdit";
 import MenuItemForm from "@/components/layout/MenuItemForm";
-import { IoChevronBack } from "react-icons/io5";
 import { useParams } from "next/navigation";
 
 export default function EditMenuItemsPage() {
@@ -50,7 +48,7 @@ export default function EditMenuItemsPage() {
     <section className="mt-8">
       <Usertabs isAdmin={true} />
       <div className="text-left flex items-center justify-center gap-2">
-        <IoChevronBack size={20} /> <span>Go Back to All Menus</span>
+        <span>Go Back to All Menus</span>
       </div>
       <MenuItemForm handleForm={handleFormSumbit} menuItems={menuItems} />
     </section>

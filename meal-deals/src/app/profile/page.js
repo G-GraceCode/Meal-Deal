@@ -1,10 +1,7 @@
 "use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-// import InfoBox from "@/components/layout/InfoBox";
-// import SuccessBox from "@/components/layout/SuccessBox";
 import Usertabs from "@/components/layout/Usertabs";
 import ImageEdit from "@/components/layout/ImageEdit";
 import toast from "react-hot-toast";
