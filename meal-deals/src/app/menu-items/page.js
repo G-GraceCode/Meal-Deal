@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { userProfile } from "@/components/UserProfile";
 import Usertabs from "@/components/layout/Usertabs";
 import Link from "next/link";
-import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function MenuItemsPage() {
   const { loading, data } = userProfile();
@@ -39,11 +38,12 @@ export default function MenuItemsPage() {
           prefetch={false}
           className="no-underline text-center text-gray-500 flex items-center justify-center"
         >
-          Create New Menu Item <IoChevronForwardOutline size={20} />
+          Create New Menu Item
         </Link>
       </div>
       <div>
-        {items.length > 0 && items.map((item) => <div>{item.name}</div>)}
+        {items.length > 0 &&
+          items.map((item) => <div key={item.id}>{item.name}</div>)}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import ImageEdit from "@/components/layout/ImageEdit";
 
-export default function MenuItemForm({ handeForm, menuItems }) {
+export default function MenuItemForm({ handleForm, menuItems }) {
   const [image, setImage] = useState(menuItems?.image || "");
   const [name, setName] = useState(menuItems?.name || "");
   const [descript, setDescript] = useState(menuItems?.description || "");

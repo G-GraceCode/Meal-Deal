@@ -3,7 +3,6 @@ import Usertabs from "@/components/layout/Usertabs";
 import { userProfile } from "@/components/UserProfile";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { IoClose } from "react-icons/io5";
 
 export default function CategoriesPage() {
   const [CategoryName, setCategoryName] = useState("");
@@ -99,7 +98,6 @@ export default function CategoriesPage() {
                 }}
               >
                 <span>{item.name}</span>
-                <IoClose />
               </button>
             ))}
         </div>

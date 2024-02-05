@@ -7,7 +7,7 @@ export default function Sidenav() {
       <aside className="sticky top-0 bottom-0 flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
         <div className="relative bg-secondary w-full h-12 flex items-center justify-center">
           <Image
-            src={"/meal.png"}
+            src={"/logo1.svg"}
             width={100}
             height={100}
             // layout={"fill"}
