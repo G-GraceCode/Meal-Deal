@@ -55,7 +55,9 @@ export default function CategoriesPage() {
 
   const deleteCategory = async (_id) => {
     const deletingPromise = new Promise(async (resolve, reject) => {
-      const res = await fetch("/api/categories/" + _id, { method: "DELETE" });
+      const res = await fetch("/api/categories?_id=" + _id, {
+        method: "DELETE",
+      });
       if (res.ok) resolve();
       else reject();
     });
@@ -99,6 +101,18 @@ export default function CategoriesPage() {
           <button className="bg-primary text-fontSecondary w-fit">
             {editCategory ? "Update" : "Create"}
           </button>
+          {editCategory && (
+            <button
+              className="border-2 border-primary text-primary bg-gray-100 w-fit"
+              type="button"
+              onClick={() => {
+                setEditCategory(null);
+                setCategoryName("");
+              }}
+            >
+              Cancle
+            </button>
+          )}
         </div>
       </form>
       <div>
@@ -114,7 +128,7 @@ export default function CategoriesPage() {
                 <div className="flex items-center gap-2">
                   <span
                     key={item._id}
-                    className="flex items-center justify-between bg-secondary text-fontSecondary rounded-full w-4 h-4"
+                    className="flex items-center cursor-pointer justify-center bg-secondary text-fontSecondary rounded-full w-6 h-6"
                     onClick={() => {
                       setEditCategory(item);
                       setCategoryName(item.name);
@@ -122,17 +136,15 @@ export default function CategoriesPage() {
                   >
                     <Edit />
                   </span>
-                  <button
-                    className="flex items-center justify-between bg-primary text-fontSecondary rounded-full"
+                  <span
+                    className="flex items-center cursor-pointer justify-center bg-primary text-fontSecondary rounded-full w-6 h-6"
                     type="button"
                     onClick={() => {
-                      deleteCategory(item.id);
+                      deleteCategory(item._id);
                     }}
                   >
-                    <span>
-                      <Close />
-                    </span>
-                  </button>
+                    <Close />
+                  </span>
                 </div>
               </div>
             ))}
