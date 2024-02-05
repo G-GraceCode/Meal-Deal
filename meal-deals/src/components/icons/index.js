@@ -13,6 +13,7 @@ import Plus from "./Plus";
 import ChevronUp from "./ChevronUp";
 import ChevronDown from "./ChevronDown";
 import Close from "./Close";
+import Edit from "./Edit"
 
 export {
   Home,
@@ -30,4 +31,5 @@ export {
   ChevronUp,
   ChevronDown,
   Close,
+  Edit,
 };

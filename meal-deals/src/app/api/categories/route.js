@@ -16,7 +16,21 @@ export async function GET() {
 }
 
 export async function PUT(req) {
+  mongoose.connect(process.env.DB_URI);
+
   const { _id, name } = await req.json();
   const category = await Category.updateOne({ _id }, { name });
+  return Response.json(true);
+}
+
+export async function DELETE(req) {
+  mongoose.connect(process.env.DB_URI);
+
+  //  const {_id} = await req.params
+
+  const url = new URL(req.url);
+  const _id = url.searchParams.get("_id");
+
+  await Category.deleteOne({ _id });
   return Response.json(true);
 }

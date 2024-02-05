@@ -3,6 +3,7 @@ import Usertabs from "@/components/layout/Usertabs";
 import { userProfile } from "@/components/UserProfile";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Edit, Close } from "@/components/icons";
 
 export default function CategoriesPage() {
   const [CategoryName, setCategoryName] = useState("");
@@ -52,6 +53,21 @@ export default function CategoriesPage() {
     });
   };
 
+  const deleteCategory = async (_id) => {
+    const deletingPromise = new Promise(async (resolve, reject) => {
+      const res = await fetch("/api/categories/" + _id, { method: "DELETE" });
+      if (res.ok) resolve();
+      else reject();
+    });
+
+    await toast.promise(deletingPromise, {
+      loading: "Deleting Category...",
+      success: "Category Deleted",
+      error: "Error, sorr...",
+    });
+
+    getCategory();
+  };
   //   if (profileLoading) {
   //     return <span className="text-center">Loading Info</span>;
   //   }
@@ -61,7 +77,7 @@ export default function CategoriesPage() {
   //   }
 
   return (
-    <section className="mt-8 max-w-2xl mx-auto">
+    <section className="mt-8 max-w-xl mx-auto">
       <Usertabs isAdmin={true} />
       <form onSubmit={handleNewCategory} className="mt-8">
         <div className="flex items-center">
@@ -86,19 +102,39 @@ export default function CategoriesPage() {
         </div>
       </form>
       <div>
-        <div className="md:flex items-center gap-2 justify-center max-w-xs mx-auto">
+        <div className="md:flex items-center gap-2 justify-center max-w-md mx-auto flex-col">
           {categorys.length > 0 &&
             categorys.map((item) => (
-              <button
+              <div
                 key={item._id}
-                className="flex items-center justify-between px-4"
-                onClick={() => {
-                  setEditCategory(item);
-                  setCategoryName(item.name);
-                }}
+                className="flex items-center justify-between px-4 py-2 w-full mb-2 bg-gray-200 rounded-xl"
               >
-                <span>{item.name}</span>
-              </button>
+                <span className="font-bold">{item.name}</span>
+
+                <div className="flex items-center gap-2">
+                  <span
+                    key={item._id}
+                    className="flex items-center justify-between bg-secondary text-fontSecondary rounded-full w-4 h-4"
+                    onClick={() => {
+                      setEditCategory(item);
+                      setCategoryName(item.name);
+                    }}
+                  >
+                    <Edit />
+                  </span>
+                  <button
+                    className="flex items-center justify-between bg-primary text-fontSecondary rounded-full"
+                    type="button"
+                    onClick={() => {
+                      deleteCategory(item.id);
+                    }}
+                  >
+                    <span>
+                      <Close />
+                    </span>
+                  </button>
+                </div>
+              </div>
             ))}
         </div>
       </div>
