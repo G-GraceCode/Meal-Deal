@@ -26,9 +26,8 @@ export async function PUT(req) {
 export async function DELETE(req) {
   mongoose.connect(process.env.DB_URI);
 
-  //  const {_id} = await req.params
-
   const url = new URL(req.url);
+  console.log("url", url);
   const _id = url.searchParams.get("_id");
 
   await Category.deleteOne({ _id });
