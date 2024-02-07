@@ -13,7 +13,8 @@ const menuItemsSchema = new Schema(
       type: String,
     },
     category: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
+      ref: "Category",
     },
     image: { type: String },
     basePrice: { type: String },
