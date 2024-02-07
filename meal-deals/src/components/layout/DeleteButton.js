@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 export default function DeleteButton({ onDelete, label }) {
@@ -6,26 +6,29 @@ export default function DeleteButton({ onDelete, label }) {
 
   if (confirm) {
     return (
-      <div className="fixed inset-0 w-full h-full flex items-center justify-center bg-black/70">
-        <div className="max-w-lg mx-auto p-4 bg-bg rounded-xl z-10">
+      <div
+        onClick={() => setConfirm(false)}
+        className="fixed inset-0 h-full flex items-center justify-center bg-black/70"
+      >
+        <div className="w-80 p-4 bg-bg rounded-xl z-10">
           <h5>Are you sure you want to {label}</h5>
-          <div className="mb-2 flex gap-2 items-center">
+          <div className="mb-2 flex gap-2 items-center mt-4">
             <button
               type="button"
-              className="button"
+              className="bg-gray-200"
               onClick={() => setConfirm(false)}
             >
               Cancle
             </button>
             <button
               type="button"
-              className="button"
+              className="bg-primary text-fontSecondary"
               onClick={() => {
                 onDelete();
                 setConfirm(false);
               }}
             >
-              Yes, {label}
+              {`Yes, ${label}`}
             </button>
           </div>
         </div>

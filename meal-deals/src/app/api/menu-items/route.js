@@ -10,7 +10,7 @@ export async function POST(req) {
 
 export async function PUT(req) {
   const { _id, ...data } = await req.json();
-  const menuItem = await MenuItem.findOneAndUpdate({ _id }, { data });
+  const menuItem = await MenuItem.findByIdAndUpdate(_id, data);
 }
 
 export async function GET() {
