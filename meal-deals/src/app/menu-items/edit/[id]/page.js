@@ -63,11 +63,11 @@ export default function EditMenuItemsPage() {
     return "Not an Admin";
   }
   return (
-    <section className="mt-8">
+    <section className="mt-8 max-w-xl mx-auto">
       <Usertabs isAdmin={true} />
       <Link
         href="/menu-items"
-        className="text-left flex items-center justify-center gap-2"
+        className="text-left flex items-left gap-2 no-underline mt-4"
       >
         <span>Go Back to All Menus</span>
       </Link>

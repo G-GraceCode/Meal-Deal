@@ -25,7 +25,10 @@ export default function ItemPriceProps({ name, props, setProps, addLabel }) {
 
   return (
     <div className="bg-gray-200 p-2 rounded-md mb-2">
-      <div onClick={() => setIsOpen((prev) => !prev)} className="text-left">
+      <div
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="text-left flex items-center gap-2"
+      >
         {isOpen ? <ChevronUp /> : <ChevronDown />}
 
         <span>{name}</span>
@@ -65,10 +68,11 @@ export default function ItemPriceProps({ name, props, setProps, addLabel }) {
               </div>
             </div>
           ))}
+
+        <button type="button" onClick={addProp} className="bg-white">
+          {addLabel}
+        </button>
       </div>
-      <button type="button" onClick={addProp} className="bg-white">
-        {addLabel}
-      </button>
     </div>
   );
 }

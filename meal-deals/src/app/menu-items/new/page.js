@@ -36,18 +36,15 @@ export default function NewMenuItemsPage() {
     return "Not an Admin";
   }
   return (
-    <section className="mt-8">
+    <section className="mt-8 max-w-xl mx-auto">
       <Usertabs isAdmin={true} />
       <Link
         href="/menu-items"
-        className="text-left flex items-center justify-center gap-2 mmt-4"
+        className="text-left flex items-left gap-2 mt-4 no-underline"
       >
         <IoChevronBack size={20} /> <span>Go Back to All Menus</span>
       </Link>
-      <MenuItemForm
-        className="mt-8 max-w-md mx-auto"
-        onSubmit={handleFormSumbit}
-      />
+      <MenuItemForm handleForm={handleFormSumbit} />
     </section>
   );
 }
