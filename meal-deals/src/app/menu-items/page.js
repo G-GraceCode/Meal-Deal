@@ -43,7 +43,11 @@ export default function MenuItemsPage() {
       </div>
       <div>
         {items.length > 0 &&
-          items.map((item) => <div key={item.id}>{item.name}</div>)}
+          items.map((item) => (
+            <div key={item._id} className="text-center cursor-pointer">
+              <Link href={`/menu-items/edit/${item._id}`}>{item.name}</Link>
+            </div>
+          ))}
       </div>
     </section>
   );
