@@ -1,7 +1,7 @@
 "use client";
 import ImageEdit from "@/components/layout/ImageEdit";
 import ItemsPriceProps from "@/components/layout/ItemsPriceProps";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MenuItemForm({ handleForm, menuItems }) {
   const [image, setImage] = useState(menuItems?.image || "");
@@ -12,10 +12,20 @@ export default function MenuItemForm({ handleForm, menuItems }) {
   const [extraIngredients, setExtraIngredients] = useState(
     menuItems?.extraIngredients || [],
   );
+  const [category, setCategory] = useState(menuItems?.category || "");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/categories").then((res) => {
+      res.json().then((items) => {
+        setCategories(items);
+      });
+    });
+  }, []);
 
   return (
     <form
-      className="mt-8 max-w-md mx-auto"
+      className="mt-8 w-xl mx-auto"
       onSubmit={(e) =>
         handleForm(e, {
           image,
@@ -24,6 +34,7 @@ export default function MenuItemForm({ handleForm, menuItems }) {
           basePrice,
           sizes,
           extraIngredients,
+          category,
         })
       }
     >
@@ -43,6 +54,16 @@ export default function MenuItemForm({ handleForm, menuItems }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          <label>Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            {categories.length > 0 &&
+              categories.map((cate) => (
+                <option key={cate._id}>{cate.name}</option>
+              ))}
+          </select>
           <label>Description</label>
           <input
             type="text"

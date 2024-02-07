@@ -30,13 +30,13 @@ export default function MenuItemsPage() {
   }
 
   return (
-    <section className="mt-8">
+    <section className="mt-8 max-w-xl mx-auto">
       <Usertabs isAdmin={true} />
       <div className="mt-8 text-center">
         <Link
           href={"/menu-items/new"}
           prefetch={false}
-          className="no-underline text-center text-gray-500 flex items-center justify-center"
+          className="no-underline text-center text-gray-500 flex items-left gap-2"
         >
           Create New Menu Item
         </Link>

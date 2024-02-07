@@ -99,7 +99,7 @@ export default function CategoriesPage() {
               onChange={(e) => setCategoryName(e.target.value)}
             />
           </div>
-          <button className="bg-primary text-fontSecondary w-fit">
+          <button type="submit" className="bg-primary text-fontSecondary w-fit">
             {editCategory ? "Update" : "Create"}
           </button>
           {editCategory && (
@@ -128,7 +128,6 @@ export default function CategoriesPage() {
 
                 <div className="flex items-center gap-2">
                   <span
-                    key={item._id}
                     className="flex items-center cursor-pointer justify-center bg-secondary text-fontSecondary rounded-full w-6 h-6"
                     onClick={() => {
                       setEditCategory(item);
@@ -139,7 +138,7 @@ export default function CategoriesPage() {
                   </span>
                   <DeleteButton
                     label="Delete"
-                    onDelete={deleteCategory(item._id)}
+                    onDelete={() => deleteCategory(item._id)}
                   />
                 </div>
               </div>
