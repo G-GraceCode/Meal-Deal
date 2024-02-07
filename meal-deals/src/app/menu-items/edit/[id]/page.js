@@ -6,11 +6,12 @@ import Usertabs from "@/components/layout/Usertabs";
 import MenuItemForm from "@/components/layout/MenuItemForm";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import DeleteButton from "@/components/layout/DeleteButton";
 
 export default function EditMenuItemsPage() {
   const { id } = useParams();
   const [menuItems, setMenuItems] = useState(null);
-  const {loading, data} = userProfile();
+  const { loading, data } = userProfile();
 
   useEffect(() => {
     fetch("/api/menu-items").then((res) => {
@@ -71,13 +72,7 @@ export default function EditMenuItemsPage() {
         <span>Go Back to All Menus</span>
       </Link>
       <MenuItemForm handleForm={handleFormSumbit} menuItems={menuItems} />
-      <div className="max-w-md mx-auto mt-4">
-        <div className="max-w-ms ml-auto pl-4">
-          <button type="button" onClick={handleDeleteMenuItem}>
-            Delete this project
-          </button>
-        </div>
-      </div>
+      <DeleteButton label="Delete" onDelete={handleDeleteMenuItem} />
     </section>
   );
 }
