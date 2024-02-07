@@ -17,3 +17,14 @@ export async function GET() {
   mongoose.connect(process.env.DB_URI);
   return Response.json(await MenuItem.find());
 }
+
+export async function DELETE(req) {
+  mongoose.connect(process.env.DB_URI);
+
+  const url = new URL(req.url);
+  console.log("url", url);
+  const _id = url.searchParams.get("_id");
+
+  await MenuItem.deleteOne({ _id });
+  return Response.json(true);
+}

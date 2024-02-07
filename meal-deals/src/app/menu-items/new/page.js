@@ -1,6 +1,7 @@
 "use client";
 import { userProfile } from "@/components/UserProfile";
 import toast from "react-hot-toast";
+import Link from "next/link";
 import { useState } from "react";
 import Usertabs from "@/components/layout/Usertabs";
 import ImageEdit from "@/components/layout/ImageEdit";
@@ -37,9 +38,12 @@ export default function NewMenuItemsPage() {
   return (
     <section className="mt-8">
       <Usertabs isAdmin={true} />
-      <div className="text-left flex items-center justify-center gap-2">
+      <Link
+        href="/menu-items"
+        className="text-left flex items-center justify-center gap-2 mmt-4"
+      >
         <IoChevronBack size={20} /> <span>Go Back to All Menus</span>
-      </div>
+      </Link>
       <MenuItemForm
         className="mt-8 max-w-md mx-auto"
         onSubmit={handleFormSumbit}

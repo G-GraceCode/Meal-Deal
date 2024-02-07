@@ -25,12 +25,12 @@ export default function ItemPriceProps({ name, props, setProps, addLabel }) {
 
   return (
     <div className="bg-gray-200 p-2 rounded-md mb-2">
-      <button onClick={() => setIsOpen((prev) => !prev)}>
-        {isOpen ? <ChevronDown /> : <ChevronUp />}
+      <div onClick={() => setIsOpen((prev) => !prev)} className="text-left">
+        {isOpen ? <ChevronUp /> : <ChevronDown />}
 
         <span>{name}</span>
         <span>{`(${props.length})`}</span>
-      </button>
+      </div>
       <div className={isOpen ? "block" : "hidden"}>
         {props.length > 0 &&
           props.map((size, index) => (
