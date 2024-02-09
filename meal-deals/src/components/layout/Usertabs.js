@@ -36,7 +36,7 @@ export default function Usertabs({ isAdmin }) {
           </Link>
           <Link
             prefetch={false}
-            className={`${path === "/user" ? "active" : ""} flex items-center gap-2`}
+            className={`${path.includes("/users") ? "active" : ""} flex items-center gap-2`}
             href="/users"
           >
             <Users size={20} /> Users
