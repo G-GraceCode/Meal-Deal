@@ -10,8 +10,8 @@ import toast from "react-hot-toast";
 export default function ProfilePage() {
   const session = useSession();
   const status = session.status;
-  const userInfo = session.data?.user;
-  const userImage = session.data?.user?.image;
+  // const userInfo = session.data?.user;
+  // const userImage = session.data?.user?.image;
 
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -22,10 +22,11 @@ export default function ProfilePage() {
         res.json().then((data) => {
           setUser(data);
           setIsAdmin(data.admin);
+          console.log("data", data);
         });
       });
     }
-  }, [userInfo, status]);
+  }, [status]);
 
   const handleProfileUpdate = async (e, UserData) => {
     e.preventDefault();
@@ -60,7 +61,7 @@ export default function ProfilePage() {
   return (
     <section className="mt-8">
       <Usertabs isAdmin={isAdmin} />
-      <UserForm user={user} onSave={handleProfileUpdate} />
+      <UserForm userData={user} onSave={handleProfileUpdate} />
     </section>
   );
 }

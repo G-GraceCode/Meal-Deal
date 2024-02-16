@@ -2,16 +2,18 @@
 import ImageEdit from "./ImageEdit";
 import { useState, useEffect } from "react";
 
-export default function UserForm({ user, onSave }) {
-  const [userName, setUserName] = useState(user?.name || "");
-  const [isEmail, setIsEmail] = useState(user?.email || "");
-  const [image, setImage] = useState(user?.image || "");
-  const [city, setCity] = useState(user?.city || "");
-  const [postalCode, setPostalCode] = useState(user?.postalCode || "");
-  const [country, setCountry] = useState(user?.country || "");
-  const [phoneNum, setPhoneNum] = useState(user?.phone || "");
-  const [streetAddress, setStreetAddress] = useState(user?.streetAddress || "");
-
+export default function UserForm({ userData, onSave }) {
+  const [userName, setUserName] = useState(userData?.name || "");
+  const [isEmail, setIsEmail] = useState(userData?.email || "");
+  const [image, setImage] = useState(userData?.image || "");
+  const [city, setCity] = useState(userData?.city || "");
+  const [postalCode, setPostalCode] = useState(userData?.postalCode || "");
+  const [country, setCountry] = useState(userData?.country || "");
+  const [phoneNum, setPhoneNum] = useState(userData?.phone || "");
+  const [streetAddress, setStreetAddress] = useState(
+    userData?.streetAddress || "",
+  );
+  const [admin, setAdmin] = useState(userData?.admin || false);
   return (
     <div className="max-w-xl mx-auto mt-4">
       <div className="md:flex gap-3">
@@ -25,7 +27,7 @@ export default function UserForm({ user, onSave }) {
 
         <form
           className="grow"
-          onSubmit={() =>
+          onSubmit={(e) =>
             onSave(e, {
               name: userName,
               image,
@@ -34,6 +36,7 @@ export default function UserForm({ user, onSave }) {
               phone: phoneNum,
               city,
               country,
+              admin,
             })
           }
         >
@@ -45,7 +48,6 @@ export default function UserForm({ user, onSave }) {
             onChange={(e) => setUserName(e.target.value)}
           />
           <label>email</label>
-
           <input
             type="email"
             placeholder="email"
@@ -98,6 +100,15 @@ export default function UserForm({ user, onSave }) {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           />
+          <div className="flex items-center mb-4 ml-2">
+            <input
+              type="checkbox"
+              checked={admin}
+              className="mr-3"
+              onChange={(e) => setAdmin(e.target.checked)}
+            />
+            <label>Admin</label>
+          </div>
           <button type="submit">Save</button>
         </form>
       </div>

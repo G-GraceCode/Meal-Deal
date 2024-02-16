@@ -11,6 +11,7 @@ export async function PUT(req) {
   const { _id, name, image, ...otherDetails } = data;
 
   let filter = {};
+
   if (_id) {
     filter = { _id };
   } else {
@@ -27,7 +28,7 @@ export async function PUT(req) {
   return Response.json(true);
 }
 
-export async function GET() {
+export async function GET(req) {
   mongoose.connect(process.env.DB_URI);
 
   const url = new URL(req.url);
@@ -44,7 +45,7 @@ export async function GET() {
     if (!email) {
       return Response.json({});
     }
-    filterUser = { _id };
+    filterUser = { email };
   }
 
   const user = await User.findOne(filterUser).lean(); // use the lean method to get the user detail once

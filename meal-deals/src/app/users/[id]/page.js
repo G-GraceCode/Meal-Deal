@@ -4,6 +4,7 @@ import Usertabs from "@/components/layout/Usertabs";
 import { userProfile } from "@/components/UserProfile";
 import UserForm from "@/components/layout/UserForm";
 import { useParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function EditUserPage() {
   const { loading: profileLoading, data: profileData } = userProfile();
@@ -19,14 +20,14 @@ export default function EditUserPage() {
     });
   }, []);
 
-    const handleUserUpdate = async (e, UserData) => {
+  const handleUserUpdate = async (e, UserData) => {
     e.preventDefault();
     try {
       const savingPromise = new Promise(async (resolve, reject) => {
         const res = await fetch("/api/profile", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({_id: id, ...UserData}),
+          body: JSON.stringify({ _id: id, ...UserData }),
         });
         if (res.ok) resolve();
         else reject();
@@ -54,7 +55,7 @@ export default function EditUserPage() {
     <section className="mt-8 max-w-xl mx-auto">
       <Usertabs isAdmin={true} />
       <div className="mt-4">
-        <UserForm user={user} onSave={handleUserUpdate}/>
+        <UserForm userData={user} onSave={handleUserUpdate} />
       </div>
     </section>
   );
