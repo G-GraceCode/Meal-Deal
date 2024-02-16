@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Home, Search, Menu, Light, Favorite } from "@/components/icons/index";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Sidenav() {
+  const path = usePathname();
+
   return (
     <>
       <aside className="sticky top-0 bottom-0 flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
@@ -20,17 +25,37 @@ export default function Sidenav() {
           className="w-full flex flex-col items-center justify-center py-4 gap-1 text-gray-800 text-xs font-medium mt-6 nav_list"
           style={{ borderBottom: "2px double #000" }}
         >
-          <li className="flex flex-col items-center active">
-            <Home size={22} className="mb-2" /> <p>Home</p>
+          <li className={`${path === "/" ? "active" : ""}`}>
+            <Link
+              href={"/"}
+              className={`flex flex-col items-center no-underline`}
+            >
+              <Home size={22} className="mb-2" /> <p>Home</p>
+            </Link>
           </li>
-          <li className="flex flex-col items-center">
-            <Search size={22} className="mb-2" /> <p>Search</p>
+          <li className={`${path === "/search" ? "active" : ""}`}>
+            <Link
+              className={`flex flex-col items-center no-underline`}
+              href={"/search"}
+            >
+              <Search size={22} className="mb-2" /> <p>Search</p>
+            </Link>
           </li>
-          <li className="flex flex-col items-center">
-            <Menu size={22} className="mb-2" /> <p>Menu</p>
+          <li className={`${path === "/menu" ? "active" : ""}`}>
+            <Link
+              className={`flex flex-col items-center no-underline`}
+              href={"/menu"}
+            >
+              <Menu size={22} className="mb-2" /> <p>Menu</p>
+            </Link>
           </li>
-          <li className="flex flex-col items-center">
-            <Favorite size={22} className="mb-2" /> Favorites
+          <li>
+            <Link
+              className="flex flex-col items-center no-underline"
+              href={"/favorites"}
+            >
+              <Favorite size={22} className="mb-2" /> <p> Favorites</p>
+            </Link>
           </li>
         </ul>
         <ul className="flex flex-col gap-1 py-4 text-gray-800 text-xs font-medium nav_list">
