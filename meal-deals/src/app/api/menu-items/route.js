@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 export async function POST(req) {
   const data = await req.json();
-  const menuItem = await MenuItem.create(data);
+  const menuItem = await MenuItem.create({ data });
 
   return Response.json(menuItem);
 }
