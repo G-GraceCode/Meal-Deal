@@ -37,7 +37,7 @@ export default function MenuItemsPage() {
         <Link
           href={"/menu-items/new"}
           prefetch={false}
-          className="no-underline text-center text-gray-500 flex items-left gap-2"
+          className="no-underline text-center text-gray-500 flex items-center justify-centergap-2 px-4 py-2 border border-gray-300 border-solid bg-gray-200"
         >
           Create New Menu Item
         </Link>
@@ -63,7 +63,7 @@ export default function MenuItemsPage() {
                         height={200}
                       />
                     ) : (
-                      <span>{`${item.name[0]}`}</span>
+                      <span>{`${item?.name[0]}`}</span>
                     )}
                   </div>
                   <div className="text-center">{item.name}</div>

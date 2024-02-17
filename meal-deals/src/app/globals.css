@@ -157,8 +157,11 @@ img {
 }
 
 .sideBar {
-  flex: 0.063;
+  position: sticky;
+  height: 100%;
+  flex: 0.05;
   max-width: calc(100% - 93%);
+  top: 0px;
 }
 
 @media (max-width: 769px) {
@@ -168,6 +171,7 @@ img {
   }
 
   .sideBar {
+    display: none;
     flex: 0.13;
     max-width: calc(100% - 88%);
   }

@@ -11,12 +11,12 @@ import { IoChevronBack } from "react-icons/io5";
 export default function NewMenuItemsPage() {
   const { loading, data } = userProfile();
 
-  const handleFormSumbit = async (e, data) => {
+  const handleFormSumbit = async (e, itemData) => {
     e.preventDefault();
     const savingPromise = new Promise(async (resolve, reject) => {
       const res = await fetch("/api/menu-items", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(itemData),
         headers: { "Content-Type": "application/json" },
       });
       if (res.ok) resolve();
