@@ -63,7 +63,7 @@ export default function MenuItemsPage() {
                         height={200}
                       />
                     ) : (
-                      <span>{item?.name[0]}</span>
+                      <span>{item?.name}</span>
                     )}
                   </div>
                   <div className="text-center">{item.name}</div>
