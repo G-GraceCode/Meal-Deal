@@ -13,7 +13,8 @@ import Plus from "./Plus";
 import ChevronUp from "./ChevronUp";
 import ChevronDown from "./ChevronDown";
 import Close from "./Close";
-import Edit from "./Edit"
+import Edit from "./Edit";
+import Order from "./Order";
 
 export {
   Home,
@@ -32,4 +33,5 @@ export {
   ChevronDown,
   Close,
   Edit,
+  Order,
 };

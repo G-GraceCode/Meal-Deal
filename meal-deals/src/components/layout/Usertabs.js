@@ -1,10 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaUsers, FaUser } from "react-icons/fa";
-import { BiSolidCategoryAlt } from "react-icons/bi";
-import { CgMenuGridO } from "react-icons/cg";
-import { User, Category, Menu, Users } from "@/components/icons/index";
+import { User, Category, Menu, Users, Order } from "@/components/icons/index";
 
 export default function Usertabs({ isAdmin }) {
   const path = usePathname();
@@ -32,7 +29,7 @@ export default function Usertabs({ isAdmin }) {
             className={`${path.includes("/menu-items") ? "active" : ""} flex items-center gap-2`}
             href="/menu-items"
           >
-            <Menu size={20} /> Menu Items
+            <Menu size={20} /> Menu
           </Link>
           <Link
             prefetch={false}
@@ -40,6 +37,13 @@ export default function Usertabs({ isAdmin }) {
             href="/users"
           >
             <Users size={20} /> Users
+          </Link>
+          <Link
+            prefetch={false}
+            className={`${path.includes("/Orders") ? "active" : ""} flex items-center gap-2`}
+            href="/Orders"
+          >
+            <Order size={20} /> Orders
           </Link>
         </>
       )}
