@@ -1,8 +1,8 @@
-// import Image from "next/lagacy/image";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="hero md:mt-4 border-b border-gray-200">
+    <section className="hero md:mt-4 max-h-[500px] md:flex items-center justif-around mx-auto">
       <div className="w-2xl py-8 md:py-12 px-4">
         <h1 className="text-4xl font-semibold">
           Everything
@@ -31,16 +31,14 @@ export default function Hero() {
           </button>
         </div>
       </div>
-      {/* <div className="relative hidden md:block">
+      <div className="relative hidden md:block">
         <Image
-          src={
-            "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-          }
-          layout={"fill"}
-          objectFit={"contain"}
+          src={"https://www.cicis.com/media/5jzgsmbq/supreme-pizza.png"}
+          width={350}
+          height={350}
           alt={"pizza"}
         />
-      </div> */}
+      </div>
     </section>
   );
 }
