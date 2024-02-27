@@ -15,6 +15,7 @@ import ChevronDown from "./ChevronDown";
 import Close from "./Close";
 import Edit from "./Edit";
 import Order from "./Order";
+import ShoppingBar from "./ShoppingBar";
 
 export {
   Home,
@@ -34,4 +35,5 @@ export {
   Close,
   Edit,
   Order,
+  ShoppingBar,
 };

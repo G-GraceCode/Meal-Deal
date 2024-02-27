@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { Bars, Notification } from "@/components/icons/index";
+import { Bars, Notification, ShoppingBar } from "@/components/icons/index";
 import Image from "next/image";
 
 export default function Navbar({ close }) {
@@ -22,10 +22,11 @@ export default function Navbar({ close }) {
           <Link
             href="/"
             prefetch={false}
-            className="font-semibold text-2xl no-underline text-secondary"
+            className="font-semibold text-2xl no-underline text-secondary mr-2"
           >
             Meal<span className="text-primary ml-2">Deal</span>
           </Link>
+          <ShoppingBar size={25} />
         </div>
         <div>
           {status === "authenticated" && (
