@@ -15,7 +15,7 @@ export default function Navbar({ close }) {
   }
 
   return (
-    <nav className="sticky top-0 inset-x-0 bg-[#fefecc]">
+    <nav className="sticky top-0 inset-x-0 w-full bg-[#fefecc] z-10">
       <div className="flex flex-row items-center justify-between p-2">
         <div className="flex items-center gap-3">
           <Bars size={25} onClick={close} />
