@@ -154,8 +154,8 @@ img {
 
 .right-side {
   flex: 1;
-  min-width: 100%;
-  /* overflow-x: hidden; */
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .sideBar {
