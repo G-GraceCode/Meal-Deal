@@ -8,7 +8,7 @@ export default function Sidenav() {
   const path = usePathname();
 
   return (
-    <aside className="flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
+    <div className="flex items-center flex-col justify-start bg-[#feeFcc] sideBar">
       <div className="relative bg-secondary w-full h-12 flex items-center justify-center">
         <Image
           src={"/logo1.svg"}
@@ -84,6 +84,6 @@ export default function Sidenav() {
       <div className="absolute mx-auto inset-x-0 bottom-6 flex items-center flex-col">
         <Light size={22} />
       </div>
-    </aside>
+    </div>
   );
 }
