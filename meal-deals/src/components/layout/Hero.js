@@ -40,6 +40,9 @@ export default function Hero() {
           alt={"pizza"}
           style={{ transform: "rotate(-10deg)" }}
         />
+        <h2 className="absolute top-12 left-0 text-4xl font-bold text-primary pb-2 pr-2 border-0 border-b-4 border-solid border-primary">
+          BUFFALO PIZZA
+        </h2> 
       </div>
     </section>
   );

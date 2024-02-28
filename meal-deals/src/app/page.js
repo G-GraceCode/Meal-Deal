@@ -8,7 +8,7 @@ export default function Home() {
     <section className="mx-3">
       <Hero />
       <div className="bg-primary p-4 py-6 my-4 rounded-lg">
-        <h2 className="md:text-5xl text-fontSecondary font-bold text-left mb-5 text-uppercase">
+        <h2 className="text-4xl md:text-5xl text-fontSecondary font-bold text-left mb-5 text-uppercase">
           Our Best Sells
         </h2>
         <MenuItem />
@@ -17,7 +17,7 @@ export default function Home() {
         {categories.map((item, index) => (
           <div
             key={index}
-            className="bg-gray-100 rounded-lg p-4 flex justify-between items-center"
+            className="bg-gray-100 rounded-lg p-4 flex justify-between items-center shadow-md"
           >
             <h2 className="font-bold sm:text-xl">{item.name}</h2>
             <img src={item.image} alt={item.name} className="w-20" />
