@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="hero md:mt-4 max-h-[500px] rounded-lg md:flex items-center justify-around mx-auto bg-gray-100">
+    <section className="hero ms:mt-4 md:mt-4 max-h-[500px] rounded-lg md:flex items-center justify-around mx-auto bg-gray-200">
       <div className="py-8 md:py-12 px-4">
         <h1 className="text-5xl font-semibold">
           Everything
@@ -42,7 +42,7 @@ export default function Hero() {
         />
         <h2 className="absolute top-12 left-0 text-4xl font-bold text-primary pb-2 pr-2 border-0 border-b-4 border-solid border-primary">
           BUFFALO PIZZA
-        </h2> 
+        </h2>
       </div>
     </section>
   );
