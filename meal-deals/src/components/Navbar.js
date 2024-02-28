@@ -22,11 +22,16 @@ export default function Navbar({ close }) {
           <Link
             href="/"
             prefetch={false}
-            className="font-semibold text-2xl no-underline text-secondary mr-2"
+            className="font-semibold text-2xl no-underline text-secondary mr-1"
           >
             Meal<span className="text-primary ml-2">Deal</span>
           </Link>
-          <ShoppingBar size={25} />
+          <span className="relative px-2">
+            <ShoppingBar size={22} />
+            <sup className="bg-primary w-[20px] h-[20px] rounded-full p-1 flex items-center justify-center absolute top-[-4%] right-[-5%] text-[#fff]">
+              0
+            </sup>
+          </span>
         </div>
         <div>
           {status === "authenticated" && (
