@@ -1,7 +1,7 @@
 export default function MenuPage() {
   return (
-    <div>
+    <section>
       <h1>Menu Page</h1>
-    </div>
+    </section>
   );
 }

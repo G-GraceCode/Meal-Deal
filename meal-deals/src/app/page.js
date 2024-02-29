@@ -9,8 +9,9 @@ export default function Home() {
       <Hero />
       <div className="bg-primary p-4 py-6 my-4 rounded-lg">
         <h2 className="text-4xl md:text-5xl text-fontSecondary font-bold text-left mb-5 text-uppercase">
-          Our Best Sells
+          Our Best Sellers
         </h2>
+        <p>CheckOut Our Best Sellers</p>
         <MenuItem />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6">
