@@ -7,7 +7,7 @@ export default function ImageEdit({ link, setLink }) {
   // const [link ,setLink] = useState('')
   const handleFileChange = async (e) => {
     const files = e.target.files;
-    if (files.length > 0) {
+    if (files.length >= 0) {
       try {
         const data = new FormData();
         data.set("file", files[0]);
@@ -16,7 +16,7 @@ export default function ImageEdit({ link, setLink }) {
           const res = await fetch("/api/upload", {
             method: "POST",
             body: data,
-            headers: { "Content-Type": "multipart/form-data" },
+            credentials: "include",
           });
           if (res.ok) {
             res.json().then((data) => {
